@@ -5,7 +5,7 @@ class RegattasController < ApplicationController
   end
 
   def index
-  @regattas = Regatta.all
+    @regattas = Regatta.all
   end
 
   def new
@@ -26,4 +26,10 @@ class RegattasController < ApplicationController
   def regatta_params
     params.require(:regatta).permit(:name, :place, :startdate, :enddate)
   end
+
+  def destroy
+  Regatta.find(params[:id]).destroy
+  flash[:success] = "Regatta destroyed"
+  redirect_to '/regattas'
+end
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get 'static_pages/home'
-  get '/myregattas', to: 'static_pages#myregattas'
+  get '/myregattas', to: 'static_pages#myregattas', as: 'myregattas'
 
   get  '/signup',  to: 'users#new'
 

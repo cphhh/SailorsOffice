@@ -10,6 +10,8 @@
         <th>Startdate</th>
         <td></td>
         <th>Enddate</th>
+        <td></td>
+        <th>Crew</th>
       </tr>
     </thead>
 
@@ -23,6 +25,11 @@
           <td><%= regatta.startdate%></td>
           <td></td>
           <td><%= regatta.enddate%></td>
+          <td></td>
+          <td><%= regatta.users.all.map(&:name)  %></td>
+          <td></td>
+          <td><%= link_to "delete", regatta, method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
         </tr>
       <% end %>
     </tbody>

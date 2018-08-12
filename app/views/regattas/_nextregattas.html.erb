@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <td></td>
+      <th>Place</th>
+      <td></td>
+      <th>Startdate</th>
+      <td></td>
+      <th>Enddate</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nextregattas.each do |regatta| %>
+      <tr>
+        <td><%= regatta.name%></td>
+        <td></td>
+        <td><%= regatta.place%></td>
+        <td></td>
+        <td><%= regatta.startdate%></td>
+        <td></td>
+        <td><%= regatta.enddate%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
