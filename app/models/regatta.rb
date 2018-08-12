@@ -1,0 +1,2 @@
+class Regatta < ApplicationRecord
+end

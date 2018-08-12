@@ -6,7 +6,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 section {
@@ -23,6 +23,22 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+}
+
+/* navbar */
+
+.navbar {
+
+}
+
+/* tables */
+table tr td:empty {
+    width: 10px;
+}
+
+table tr td {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* debugbox */
