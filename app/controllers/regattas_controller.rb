@@ -23,6 +23,16 @@ class RegattasController < ApplicationController
     end
   end
 
+  def edit
+    @regatta = Regatta.find(params[:id])
+  end
+
+  def update
+      @regatta = Regatta.find(params[:id])
+      @regatta.update(regatta_params)
+      redirect_to regattas_path
+  end
+
   def regatta_params
     params.require(:regatta).permit(:name, :place, :startdate, :enddate)
   end
@@ -31,5 +41,7 @@ class RegattasController < ApplicationController
   Regatta.find(params[:id]).destroy
   flash[:success] = "Regatta destroyed"
   redirect_to '/regattas'
-end
+  end
+
+
 end

@@ -26,10 +26,12 @@
           <td></td>
           <td><%= regatta.enddate%></td>
           <td></td>
-          <td><%= regatta.users.all.map(&:name)  %></td>
+          <td><%= regatta.users.all.map(&:name).flatten.join(',')  %></td>
           <td></td>
           <td><%= link_to "delete", regatta, method: :delete,
                                   data: { confirm: "You sure?" } %></td>
+          <td></td>
+          <td><%= link_to "edit", [:edit, regatta] %></td>
         </tr>
       <% end %>
     </tbody>
