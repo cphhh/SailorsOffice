@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/home'
   get '/myregattas', to: 'static_pages#myregattas', as: 'myregattas'
+  post 'updaterids' => 'user#updaterids', as: :updaterids
 
   get  '/signup',  to: 'users#new'
 

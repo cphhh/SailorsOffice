@@ -21,7 +21,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attribute(:regatta_ids,join_params)
+    @user.update_attribute(:regatta_ids, join_params.fetch(:regatta_ids))
+    #flash[:success] = params[:regatta_ids => []]
+    render :template => 'static_pages/myregattas'
+  end
+
+  def updaterids
+    @user = User.find(params[:id])
+    @user.update_attribute(:regatta_ids, join_params.fetch(:regatta_ids []))
     #flash[:success] = params[:regatta_ids => []]
     render :template => 'static_pages/myregattas'
   end
@@ -38,6 +45,6 @@ class UsersController < ApplicationController
     end
 
     def join_params
-      params.require(:user).permit({regatta_ids: []})
+      params.require(:user).permit(regatta_ids: [])
     end
 end
