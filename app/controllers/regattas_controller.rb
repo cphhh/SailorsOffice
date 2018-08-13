@@ -38,9 +38,9 @@ class RegattasController < ApplicationController
   end
 
   def destroy
-  Regatta.find(params[:id]).destroy
-  flash[:success] = "Regatta destroyed"
-  redirect_to '/regattas'
+    Regatta.find(params[:id]).destroy
+    flash[:success] = "Regatta destroyed"
+    redirect_to '/regattas'
   end
 
 

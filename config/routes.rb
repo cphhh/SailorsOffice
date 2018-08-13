@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+  get 'invoices/new'
+
+  get 'invoices/show'
+
+  get 'invoices/edit'
+
+  get 'invoices/index'
+
   get 'regattas/new'
 
   root 'static_pages#home'
 
   get 'static_pages/home'
-  get '/myregattas', to: 'static_pages#myregattas', as: 'myregattas'
-  post 'updaterids' => 'user#updaterids', as: :updaterids
 
   get  '/signup',  to: 'users#new'
 
@@ -13,8 +19,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :regattas
-
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :regattas
+  resources :invoices
 end
