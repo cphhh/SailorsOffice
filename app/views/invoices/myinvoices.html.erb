@@ -1,4 +1,4 @@
-<h1>All invoices</h1>
+<h1>My invoices</h1>
   <table>
     <thead>
       <tr>
@@ -23,9 +23,9 @@
           <td></td>
           <td><%= invoice.comment %></td>
           <td></td>
-          <td><%= @regattas.find(invoice.regatta_id).name %></td>
+          <td><%= invoice.regatta.name %></td>
           <td></td>
-          <td><%= @user.find(invoice.user_id).name%></td>
+          <td><%= invoice.user.name%></td>
           <td></td>
           <td><%= link_to "delete", invoice, method: :delete,
                                   data: { confirm: "You sure?" } %></td>

@@ -1,0 +1,49 @@
+<h1>Join regattas</h1>
+<div class="row">
+  <div class="col-xs-2">
+    <b>Name</b>
+  </div>
+
+  <div class="col-xs-2">
+    <b>Place</b>
+  </div>
+
+  <div class="col-xs-2">
+    <b>Startdate</b>
+  </div>
+
+  <div class="col-xs-2">
+    <b>Enddate</b>
+  </div>
+
+  <div class="col-xs-2">
+    <b>Participate?</b>
+  </div>
+</div>
+
+<%= form_for(@user) do |f| %>
+  <%= f.collection_check_boxes :regatta_ids, Regatta.all, :id, :name do |b| %>
+    <div class="row">
+      <div class="col-xs-2">
+        <%=  b.text %>
+      </div>
+
+      <div class="col-xs-2">
+        <%=b.object.place%>
+      </div>
+
+      <div class="col-xs-2">
+        <%=b.object.startdate%>
+      </div>
+
+      <div class="col-xs-2">
+        <%=b.object.enddate%>
+      </div>
+
+      <div class="col-xs-2">
+        <%= b.check_box(class: "check_box") %>
+      </div>
+    </div>
+  <% end %>
+  <%= f.submit "Send", class: "btn" %>
+<% end %>

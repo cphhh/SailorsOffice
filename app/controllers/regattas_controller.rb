@@ -33,6 +33,15 @@ class RegattasController < ApplicationController
       redirect_to regattas_path
   end
 
+  def joinregattas
+    @user = User.find(current_user.id)
+  end
+
+  def myregattas
+    #@regattas = Regatta.where(user_id: current_user.id)
+    @regattas = current_user.regattas.all
+  end
+
   def regatta_params
     params.require(:regatta).permit(:name, :place, :startdate, :enddate)
   end

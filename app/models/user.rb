@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   has_and_belongs_to_many :regattas
+  has_many :invoices
 
   # Returns the hash digest of the given string.
   def User.digest(string)

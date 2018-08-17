@@ -1,11 +1,11 @@
 class InvoicesController < ApplicationController
 
   def new
-    @invoice = Invoices.new
+    @invoice = Invoice.new
   end
 
   def create
-    @invoice = Invoices.new(invoice_params)
+    @invoice = Invoice.new(invoice_params)
     if @invoice.save
       flash[:success] = "Added new Invoice"
       redirect_to @invoice
@@ -17,6 +17,8 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
+    @regatta = Regatta.find(@invoice.regatta_id)
+    @user = User.find(@invoice.user_id)
   end
 
   def edit
@@ -24,12 +26,18 @@ class InvoicesController < ApplicationController
   end
 
   def index
+    @invoices = Invoice.all
     @regattas = Regatta.all
+    @user = User.all
+  end
+
+  def myinvoices
+    @invoices = Invoice.where(:user_id => current_user.id)
   end
 
   private
-    def regatta_params
+    def invoice_params
       params.require(:invoice).permit(:name, :price, :comment, :user_id, :regatta_id)
     end
-  end
+
 end

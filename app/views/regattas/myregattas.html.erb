@@ -1,0 +1,35 @@
+<h1>My regattas</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <td></td>
+        <th>Place</th>
+        <td></td>
+        <th>Startdate</th>
+        <td></td>
+        <th>Enddate</th>
+        <td></td>
+        <th>Crew</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @regattas.each do |regatta| %>
+        <tr>
+          <td><%= regatta.name%></td>
+          <td></td>
+          <td><%= regatta.place%></td>
+          <td></td>
+          <td><%= regatta.startdate%></td>
+          <td></td>
+          <td><%= regatta.enddate%></td>
+          <td></td>
+          <td><%= regatta.users.all.map(&:name).flatten.join(',')  %></td>
+          <td></td>
+          <td><%= link_to "add invoices", [:edit, regatta] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

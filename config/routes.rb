@@ -21,5 +21,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :regattas
+  get '/joinregattas',  to: 'regattas#joinregattas'
+  get '/myregattas',  to: 'regattas#myregattas'
+
   resources :invoices
+  get '/myinvoices',  to: 'invoices#myinvoices'
+
 end

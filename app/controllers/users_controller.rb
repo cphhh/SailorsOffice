@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update_attribute(:regatta_ids, join_params.fetch(:regatta_ids))
     #flash[:success] = params[:regatta_ids => []]
-    render :template => 'static_pages/myregattas'
+    render :template => 'regattas/joinregattas'
   end
 
   def updaterids
