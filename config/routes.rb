@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'balances/new'
+
+  get 'balances/show'
+
+  get 'balances/edit'
+
+  get 'balances/index'
+
   root 'static_pages#home'
 
   get 'static_pages/home'

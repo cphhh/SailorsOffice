@@ -16,6 +16,7 @@ class RegattasController < ApplicationController
     @regatta = Regatta.new(regatta_params)
     if @regatta.save
       flash[:success] = "Added new regatta"
+      Balance.create(regatta_id: @regatta.id, closed: false)
       redirect_to @regatta
     else
       flash[:dange] = "Regatta not saved. Please check parameters!"
