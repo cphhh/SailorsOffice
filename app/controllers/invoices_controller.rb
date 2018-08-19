@@ -2,15 +2,18 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
+    @user = current_user
+    @regatta_id = regatta_params.fetch(:regatta_id)
+
   end
 
   def create
     @invoice = Invoice.new(invoice_params)
     if @invoice.save
       flash[:success] = "Added new Invoice"
-      redirect_to @invoice
+      render 'new'
     else
-      flash[:dange] = "Invoice not saved. Please check parameters!"
+      flash[:danger] = "Invoice not saved. Please check parameters!"
       render 'new'
     end
   end
@@ -38,6 +41,10 @@ class InvoicesController < ApplicationController
   private
     def invoice_params
       params.require(:invoice).permit(:name, :price, :comment, :user_id, :regatta_id)
+    end
+
+    def regatta_params
+      params.permit(:regatta_id )
     end
 
 end

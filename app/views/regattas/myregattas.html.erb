@@ -28,7 +28,7 @@
           <td></td>
           <td><%= regatta.users.all.map(&:name).flatten.join(',')  %></td>
           <td></td>
-          <td><%= link_to "add invoices", [:edit, regatta] %></td>
+          <td><%= link_to "add invoices", {:controller => "invoices", :action => "new", :regatta_id => regatta.id } %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  get 'invoices/new'
-
-  get 'invoices/show'
-
-  get 'invoices/edit'
-
-  get 'invoices/index'
-
-  get 'regattas/new'
 
   root 'static_pages#home'
 
