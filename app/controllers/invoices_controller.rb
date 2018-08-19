@@ -28,6 +28,12 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
   end
 
+  def update
+    @invoice = Invoice.find(params[:id])
+    @invoice.update(invoice_params)
+    redirect_to invoices_path
+  end
+
   def index
     @invoices = Invoice.all
     @regattas = Regatta.all
@@ -36,6 +42,12 @@ class InvoicesController < ApplicationController
 
   def myinvoices
     @invoices = Invoice.where(:user_id => current_user.id)
+  end
+
+  def destroy
+    Invoice.find(params[:id]).destroy
+    flash[:success] = "Invoice destroyed"
+    redirect_to '/invoices'
   end
 
   private
