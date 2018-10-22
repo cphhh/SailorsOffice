@@ -44,16 +44,6 @@ ActiveRecord::Schema.define(version: 20180819123240) do
     t.integer "user_id"
   end
 
-  create_table "regattausers", force: :cascade do |t|
-    t.integer "regatta_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["regatta_id", "user_id"], name: "index_regattausers_on_regatta_id_and_user_id", unique: true
-    t.index ["regatta_id"], name: "index_regattausers_on_regatta_id"
-    t.index ["user_id"], name: "index_regattausers_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"

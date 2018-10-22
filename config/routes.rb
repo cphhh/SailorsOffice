@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'balances/new'
-
-  get 'balances/show'
-
-  get 'balances/edit'
-
-  get 'balances/index'
-
   root 'static_pages#home'
 
   get 'static_pages/home'
@@ -25,5 +17,7 @@ Rails.application.routes.draw do
 
   resources :invoices
   get '/myinvoices',  to: 'invoices#myinvoices'
+
+  resources :balances
 
 end

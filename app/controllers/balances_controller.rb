@@ -8,7 +8,7 @@ class BalancesController < ApplicationController
     if @balance.save
       flash[:success] = "Added new balance"
     else
-      flash[:dange] = "Balance not saved. Please check parameters!"
+      flash[:danger] = "Balance not saved. Please check parameters!"
       render 'new'
     end
   end
@@ -20,6 +20,7 @@ class BalancesController < ApplicationController
   end
 
   def index
+    @balances = Balance.all
   end
 
   def balance_params
