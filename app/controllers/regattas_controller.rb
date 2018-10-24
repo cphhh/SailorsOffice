@@ -1,5 +1,5 @@
+# Regattas controller
 class RegattasController < ApplicationController
-
   def show
     @regatta = Regatta.find(params[:id])
   end
@@ -15,11 +15,11 @@ class RegattasController < ApplicationController
   def create
     @regatta = Regatta.new(regatta_params)
     if @regatta.save
-      flash[:success] = "Added new regatta"
+      flash[:success] = 'Added new regatta'
       Balance.create(regatta_id: @regatta.id, closed: false)
       redirect_to @regatta
     else
-      flash[:dange] = "Regatta not saved. Please check parameters!"
+      flash[:dange] = 'Regatta not saved. Please check parameters!'
       render 'new'
     end
   end
@@ -29,9 +29,9 @@ class RegattasController < ApplicationController
   end
 
   def update
-      @regatta = Regatta.find(params[:id])
-      @regatta.update(regatta_params)
-      redirect_to regattas_path
+    @regatta = Regatta.find(params[:id])
+    @regatta.update(regatta_params)
+    redirect_to regattas_path
   end
 
   def joinregattas
@@ -39,7 +39,7 @@ class RegattasController < ApplicationController
   end
 
   def myregattas
-    #@regattas = Regatta.where(user_id: current_user.id)
+    # @regattas = Regatta.where(user_id: current_user.id)
     @regattas = current_user.regattas.all
   end
 
@@ -49,9 +49,7 @@ class RegattasController < ApplicationController
 
   def destroy
     Regatta.find(params[:id]).destroy
-    flash[:success] = "Regatta destroyed"
+    flash[:success] = 'Regatta destroyed'
     redirect_to '/regattas'
   end
-
-
 end

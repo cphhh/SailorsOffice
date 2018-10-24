@@ -1,21 +1,19 @@
+# Invoices Controller
 class InvoicesController < ApplicationController
-
   def new
     @invoice = Invoice.new
     @user = current_user
     @regatta_id = regatta_params.fetch(:regatta_id)
-
   end
 
   def create
     @invoice = Invoice.new(invoice_params)
     if @invoice.save
-      flash[:success] = "Added new Invoice"
-      render 'new'
+      flash[:success] = 'Added new Invoice'
     else
-      flash[:danger] = "Invoice not saved. Please check parameters!"
-      render 'new'
+      flash[:danger] = 'Invoice not saved. Please check parameters!'
     end
+    render 'new'
   end
 
   def show
@@ -41,22 +39,24 @@ class InvoicesController < ApplicationController
   end
 
   def myinvoices
-    @invoices = Invoice.where(:user_id => current_user.id)
+    @invoices = Invoice.where(user_id: current_user.id)
   end
 
   def destroy
     Invoice.find(params[:id]).destroy
-    flash[:success] = "Invoice destroyed"
+    flash[:success] = 'Invoice destroyed'
     redirect_to '/invoices'
   end
 
   private
-    def invoice_params
-      params.require(:invoice).permit(:name, :price, :comment, :user_id, :regatta_id)
-    end
 
-    def regatta_params
-      params.permit(:regatta_id )
-    end
+  def invoice_params
+    params.require(:invoice).permit(
+      :name, :price, :comment, :user_id, :regatta_id
+    )
+  end
 
+  def regatta_params
+    params.permit(:regatta_id)
+  end
 end
