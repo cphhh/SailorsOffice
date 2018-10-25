@@ -18,7 +18,9 @@ class BalancesController < ApplicationController
 
   def edit; end
 
-  def index; end
+  def index
+    @balances = Balance.all
+  end
 
   def balance_params
     params.require(:balance).permit(:regatta_id, :closed, :closed_date)
