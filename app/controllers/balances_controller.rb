@@ -14,7 +14,10 @@ class BalancesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @balance = Balance.find(params[:id])
+    @users = @balance.regatta.users.all
+  end
 
   def edit; end
 
