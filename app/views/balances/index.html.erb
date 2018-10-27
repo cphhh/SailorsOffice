@@ -23,7 +23,11 @@
                   "closed"
                 end %></td>
         <td></td>
-        <td><%= balance.closing_date%></td>
+        <td><%= if balance.closing_date.blank? == true
+                  "-"
+                else
+                  balance.closing_date
+                end%></td>
         <td></td>
         <td><%= link_to "show", [balance] %></td>
       </tr>
