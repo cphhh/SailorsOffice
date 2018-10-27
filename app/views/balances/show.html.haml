@@ -3,11 +3,38 @@
 %table
   %tr
     %td
+    %td
     - @users.each do |user|
       %td
         %b= user.name
   %tr
     %td
       %b Kosten
+    %td 
+    - @users.each do |user|
+      %td= @costs
   %tr
     %td Summe Kosten
+
+  %tr
+    %td Zuschlag
+    %td 5,0%
+  %tr
+    %td Nutzungsgebühr
+    %td 5,00€/Tag
+  %tr
+    %td
+      %u Gesamtkosten
+
+  %tr
+    %td
+      %b Auslagen
+  %tr
+    %td
+      Summe Auslagen
+    %td
+    - @users.each do |user|
+      %td= @balance.regatta.invoices.where(:user_id => user.id).sum(:price)
+  %tr
+    %td
+      %b Summe

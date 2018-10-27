@@ -17,6 +17,8 @@ class BalancesController < ApplicationController
   def show
     @balance = Balance.find(params[:id])
     @users = @balance.regatta.users.all
+    @costs = @balance.regatta.invoices.all.sum(:price)
+    
   end
 
   def edit; end
