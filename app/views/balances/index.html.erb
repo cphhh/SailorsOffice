@@ -17,7 +17,11 @@
       <tr>
         <td><%= balance.regatta.name%></td>
         <td></td>
-        <td><%= balance.closed%></td>
+        <td><%= if balance.closed == false
+                  "open"
+                else
+                  "closed"
+                end %></td>
         <td></td>
         <td><%= balance.closing_date%></td>
         <td></td>
