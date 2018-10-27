@@ -1,0 +1,13 @@
+%h1 Balances for #{@balance.regatta.name} Regatta
+
+%table
+  %tr
+    %td
+    - @users.each do |user|
+      %td
+        %b= user.name
+  %tr
+    %td
+      %b Kosten
+  %tr
+    %td Summe Kosten
