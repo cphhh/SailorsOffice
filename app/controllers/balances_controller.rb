@@ -21,7 +21,7 @@ class BalancesController < ApplicationController
     @supplement = ((@costs/@users.count)/100)*5
     @fee = ((@balance.regatta.enddate - @balance.regatta.startdate).to_i + 1)*5
     @totalcosts = (@costs / @users.count) + @supplement + @fee
-    @totalprofit = (@users.count*@supplement) + (@users.c*@fee)
+    @totalprofit = (@users.count*@supplement) + (@users.count*@fee)
   end
 
   def edit; end
