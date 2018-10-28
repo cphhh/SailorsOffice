@@ -1,4 +1,4 @@
-%h1 Balances for #{@balance.regatta.name} Regatta
+%h1 Balance for #{@balance.regatta.name} Regatta
 
 %table
   %tr
@@ -7,34 +7,63 @@
     - @users.each do |user|
       %td
         %b= user.name
+
   %tr
     %td
       %b Kosten
-    %td 
+    %td
     - @users.each do |user|
-      %td= @costs
+      %td= @costs / @users.count
   %tr
     %td Summe Kosten
 
   %tr
-    %td Zuschlag
+    %td Supplement
     %td 5,0%
+    - @users.each do |user|
+      %td= @supplement
+
   %tr
-    %td Nutzungsgebühr
-    %td 5,00€/Tag
-  %tr
-    %td
-      %u Gesamtkosten
+    %td Fee
+    %td 5,00€/Day
+    - @users.each do |user|
+      %td= @fee
 
   %tr
     %td
-      %b Auslagen
+      %u Total costs
+    %td
+    - @users.each do |user|
+      %td= @totalcosts
+
   %tr
     %td
-      Summe Auslagen
+      %b Expenses
+
+  %tr
+    %td
+      Total Expenses
     %td
     - @users.each do |user|
       %td= @balance.regatta.invoices.where(:user_id => user.id).sum(:price)
+    %td
+      Subtotal
+    %td= @costs
+
   %tr
     %td
-      %b Summe
+      %b Total
+    %td
+    - @users.each do |user|
+      %td= (@totalcosts - @balance.regatta.invoices.where(:user_id => user.id).sum(:price)).round(2)
+    %td
+      %b Total Costs
+    %td= @costs + @totalprofit
+  %tr
+    %td
+    %td
+    - @users.each do |user|
+      %td
+    %td
+      Profit
+    %td= @totalprofit
