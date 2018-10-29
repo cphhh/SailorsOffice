@@ -3,5 +3,6 @@ class SlackController < ApplicationController
 
   def create
     @params = params[:slack]
+    render :text => 'Neue Rechnung erstellt'
   end
 end
