@@ -3,6 +3,8 @@ class SlackController < ApplicationController
 
   def create
     message = params['slack']
-    render :plain => "Neue Rechnung erstellt push"
+    text = message['text']
+
+    render :plain => "Neue Rechnung erstellt push #{text}"
   end
 end
