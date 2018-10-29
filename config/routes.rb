@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'slack/create'
+  post 'slack/create'
 
   root 'static_pages#home'
 
