@@ -2,8 +2,8 @@
 class InvoicesController < ApplicationController
   def new
     @invoice = Invoice.new
-    @user = current_user
-    @regatta_id = regatta_params.fetch(:regatta_id)
+    #@user = current_user
+    #@regatta_id = regatta_params.fetch(:regatta_id)
   end
 
   def create
