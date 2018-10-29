@@ -5,7 +5,8 @@ class SlackController < ApplicationController
     message  = params[:text]
     words = message.split
     render :plain => "Die Rechnung von #{words.second} bei der #{words.first} Regatta über #{words.third}€ wurde erstellt."
-    Invoice.create(regatta_id: Regatta.select(:id).where(:name => words.first), user_id: 1, name: words.second, price: words.third)
+    regattaid = Regatta.where(:name => words.first).select(:id).map &:id
+    Invoice.create(regatta_id: regattaid, user_id: 1, name: words.second, price: words.third)
   end
 
 end
