@@ -6,7 +6,4 @@ class SlackController < ApplicationController
     render :plain => "Neue Rechnung erstellt push #{message}"
   end
 
-  def position_params
-  params.require(:position).permit(:lat, :lo, :speed, :game, :player)
-  end
 end
