@@ -3,7 +3,8 @@ class SlackController < ApplicationController
 
   def create
     message  = params[:text]
-    render :plain => "Neue Rechnung erstellt push #{message}"
+    words = message.split
+    render :plain => "Die Rechnung von #{words.second} bei der #{words.first} Regatta über #{words.third}"
   end
 
 end
