@@ -1,6 +1,6 @@
 # Invoices Controller
 class InvoicesController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :index, :myinvoices, :destroy]
+  before_action :logged_in_user, only: [:show, :edit, :index, :myinvoices, :destroy, :new, :create]
 
   def new
     @invoice = Invoice.new
