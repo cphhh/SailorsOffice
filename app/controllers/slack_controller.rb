@@ -22,6 +22,10 @@ class SlackController < ApplicationController
       user = 4
     end
 
+    if user == 'till.pomarius'
+      user = 5
+    end
+
     regattaid = Regatta.where(:name => words.first)[0][:id]
     render :plain => "Die Rechnung von #{words.second} bei der #{words.first} Regatta über #{words.third}€ wurde erstellt. #{params[:user_name]}"
     Invoice.create(regatta_id: regattaid, user_id: user, name: words.second, price: words.third)
