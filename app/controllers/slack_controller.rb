@@ -6,19 +6,19 @@ class SlackController < ApplicationController
     words = message.split
     user = params[:user_name]
 
-    if user = 'maximilianbischof'
+    if user == 'maximilianbischof'
       user = 1
     end
 
-    if user = 'christian'
+    if user == 'christian'
       user = 2
     end
 
-    if user = 'olewittenberg'
+    if user == 'olewittenberg'
       user = 3
     end
 
-    if user = 'bele.schuett'
+    if user == 'bele.schuett'
       user = 4
     end
 
