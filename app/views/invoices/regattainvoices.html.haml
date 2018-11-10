@@ -1,0 +1,30 @@
+%h1 #{@regatta.name} invoices
+%table
+  %thead
+    %tr
+      %th Name
+      %td
+      %th Price
+      %td
+      %th Comment
+      %td
+      %th Regatta
+      %td
+      %th User
+  %tbody
+    - @invoices.each do |invoice|
+      %tr
+        %td= invoice.name
+        %td
+        %td= invoice.price
+        %td
+        %td= invoice.comment
+        %td
+        %td= invoice.regatta.name
+        %td
+        %td= invoice.user.name
+        %td
+        %td= link_to "delete", invoice, method: :delete, |
+            data: { confirm: "You sure?" }              |
+        %td
+        %td= link_to "edit", [:edit, invoice]
