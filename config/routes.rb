@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :invoices
   get '/myinvoices',  to: 'invoices#myinvoices'
+  get '/regattainvoices',  to: 'invoices#regattainvoices'
 
   resources :balances
 

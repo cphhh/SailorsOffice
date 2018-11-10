@@ -1,6 +1,6 @@
 # Invoices Controller
 class InvoicesController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :index, :myinvoices, :destroy, :new, :create, :update]
+  before_action :logged_in_user, only: [:show, :edit, :index, :myinvoices, :destroy, :new, :create, :update, :regattainvoices]
 
   def new
     @invoice = Invoice.new
@@ -42,6 +42,11 @@ class InvoicesController < ApplicationController
 
   def myinvoices
     @invoices = Invoice.where(user_id: current_user.id)
+  end
+
+  def regattainvoices
+    @regatta = Regatta.find(regatta_params.fetch(:regatta_id))
+    @invoices = Invoice.where(regatta_id: regatta_params.fetch(:regatta_id))
   end
 
   def destroy

@@ -8,6 +8,10 @@
       <th>Startdate</th>
       <td></td>
       <th>Enddate</th>
+      <td></td>
+      <th>Invoices</th>
+      <td></td>
+      <th>Balance</th>
     </tr>
   </thead>
 
@@ -21,6 +25,12 @@
         <td><%= regatta.startdate%></td>
         <td></td>
         <td><%= regatta.enddate%></td>
+        <td></td>
+        <td><%= link_to "add", {:controller => "invoices", :action => "new", :regatta_id => regatta.id } %> </br>
+        <%= link_to "show", {:controller => "invoices", :action => "regattainvoices", :regatta_id => regatta.id } %></td>
+        <td></td>
+        <td><%= link_to "show", {:controller => "balances", :action => "show",
+                :id => Balance.where(regatta_id: regatta.id)[0][:id] } %></td>
       </tr>
     <% end %>
   </tbody>

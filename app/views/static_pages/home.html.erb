@@ -2,18 +2,9 @@
 
 <% if logged_in? %>
 <h1>Tinto Racing Team</h1>
-<div class="row">
-  <div class="col-md-4">
-    <h3>Next Regattas</h3>
+
+    <h3>Current Regattas</h3>
     <%= render 'regattas/nextregattas' %>
-
-  </div>
-
-  <div class="col-md-4">
-    <h3>Last Balance</h3>
-  </div>
-</div>
-
 
 <% else %>
 <div class="center jumbotron">
