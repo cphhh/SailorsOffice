@@ -50,6 +50,7 @@ class RegattasController < ApplicationController
   end
 
   def destroy
+    Balance.where(regatta_id: params[:id]).take.destroy
     Regatta.find(params[:id]).destroy
     flash[:success] = 'Regatta destroyed'
     redirect_to '/regattas'
