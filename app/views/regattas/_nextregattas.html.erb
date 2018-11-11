@@ -26,10 +26,10 @@
         <td></td>
         <td><%= regatta.enddate%></td>
         <td></td>
-        <td><%= link_to "add", {:controller => "invoices", :action => "new", :regatta_id => regatta.id } %> </br>
-        <%= link_to "show", {:controller => "invoices", :action => "regattainvoices", :regatta_id => regatta.id } %></td>
+        <td><%= link_to '<i class="fe fe-plus"></i>'.html_safe, {:controller => "invoices", :action => "new", :regatta_id => regatta.id } %> </br>
+        <%= link_to '<i class="fe fe-eye"></i>'.html_safe, {:controller => "invoices", :action => "regattainvoices", :regatta_id => regatta.id } %></td>
         <td></td>
-        <td><%= link_to "show", {:controller => "balances", :action => "show",
+        <td><%= link_to '<i class="fe fe-eye"></i>'.html_safe, {:controller => "balances", :action => "show",
                 :id => Balance.where(regatta_id: regatta.id)[0][:id] } %></td>
       </tr>
     <% end %>
