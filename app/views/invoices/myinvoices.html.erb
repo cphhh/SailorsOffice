@@ -1,37 +1,39 @@
-<h1>My invoices</h1>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <td></td>
-        <th>Price</th>
-        <td></td>
-        <th>Comment</th>
-        <td></td>
-        <th>Regatta</th>
-        <td></td>
-        <th>User</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @invoices.each do |invoice| %>
+<div class="col-md-8">
+  <h1 style="text-align:left">My invoices</h1>
+    <table class="table table-hover">
+      <thead>
         <tr>
-          <td><%= invoice.name %></td>
+          <th>Name</th>
           <td></td>
-          <td><%= invoice.price %></td>
+          <th>Price</th>
           <td></td>
-          <td><%= invoice.comment %></td>
+          <th>Comment</th>
           <td></td>
-          <td><%= invoice.regatta.name %></td>
+          <th>Regatta</th>
           <td></td>
-          <td><%= invoice.user.name%></td>
-          <td></td>
-          <td><%= link_to "delete", invoice, method: :delete,
-                                  data: { confirm: "You sure?" } %></td>
-          <td></td>
-          <td><%= link_to "edit", [:edit, invoice] %></td>
+          <th>User</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @invoices.each do |invoice| %>
+          <tr>
+            <td><%= invoice.name %></td>
+            <td></td>
+            <td><%= invoice.price %></td>
+            <td></td>
+            <td><%= invoice.comment %></td>
+            <td></td>
+            <td><%= invoice.regatta.name %></td>
+            <td></td>
+            <td><%= invoice.user.name%></td>
+            <td></td>
+            <td><%= link_to "delete", invoice, method: :delete,
+                                    data: { confirm: "You sure?" } %></td>
+            <td></td>
+            <td><%= link_to "edit", [:edit, invoice] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

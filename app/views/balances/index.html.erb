@@ -1,36 +1,38 @@
-<h1>Balances</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Regatta</th>
-      <td></td>
-      <th>Status</th>
-      <td></td>
-      <th>Closing Date</th>
-      <td></td>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @balances.each do |balance| %>
+<div class="col-md-4">
+  <h1 style="text-align:left">Balances</h1>
+  <hr>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= balance.regatta.name%></td>
+        <th>Regatta</th>
         <td></td>
-        <td><%= if balance.closed == false
-                  "open"
-                else
-                  "closed"
-                end %></td>
+        <th>Status</th>
         <td></td>
-        <td><%= if balance.closing_date.blank? == true
-                  "-"
-                else
-                  balance.closing_date
-                end%></td>
+        <th>Closing Date</th>
         <td></td>
-        <td><%= link_to "show", [balance] %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @balances.each do |balance| %>
+        <tr>
+          <td><%= balance.regatta.name%></td>
+          <td></td>
+          <td><%= if balance.closed == false
+                    "open"
+                  else
+                    "closed"
+                  end %></td>
+          <td></td>
+          <td><%= if balance.closing_date.blank? == true
+                    "-"
+                  else
+                    balance.closing_date
+                  end%></td>
+          <td></td>
+          <td><%= link_to '<i class="fe fe-eye"></i>'.html_safe, [balance] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

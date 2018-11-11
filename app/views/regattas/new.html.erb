@@ -1,22 +1,21 @@
-<h1>New Regatta</h1>
+<div class="col-md-2"></div>
+<div class="col-md-6">
+  <h1 style="text-align:left">New Regatta</h1>
+  <hr>
+      <%= form_for(@regatta) do |f| %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@regatta) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+        <%= f.label :place %>
+        <%= f.text_field :place, class: 'form-control' %>
 
-      <%= f.label :place %>
-      <%= f.text_field :place, class: 'form-control' %>
+        <%= f.label :startdate %>
+        <%= f.date_field :startdate, class: 'form-control' %>
 
-      <%= f.label :startdate %>
-      <%= f.date_field :startdate, class: 'form-control' %>
+        <%= f.label :enddate %>
+        <%= f.date_field :enddate, class: 'form-control' %>
 
-      <%= f.label :enddate %>
-      <%= f.date_field :enddate, class: 'form-control' %>
-
-      <%= f.submit "Create regatta", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+        <%= f.submit "Create regatta", class: "btn btn-primary" %>
+      <% end %>
 </div>

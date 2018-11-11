@@ -1,10 +1,51 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'feathericon';
+
+/*
+ * feather icons
+ */
+i {
+  color: #333;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
 
 /* landing */
 .inner{
   background: rgba(255, 255, 255, .5);
 }
+
+  body {
+    padding-top: 50px;
+  }
 
 /* universal */
 
@@ -25,27 +66,11 @@ textarea {
 }
 
 /* navbar */
-
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-.navbar {
+.navbar-brand {
+   padding:6px;
 
 }
+
 
 /* tables */
 table tr td:empty {

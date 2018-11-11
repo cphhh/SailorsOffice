@@ -1,11 +1,11 @@
     <% if logged_in? %>
-    <body>
-        <h3>Current Regattas</h3>
-        <%= render 'regattas/nextregattas' %>
-
+     <div class="col-md-8">
+         <h2 style="text-align:left">Current Regattas</h2>
+         <hr>
+         <%= render 'regattas/nextregattas' %>
+     </div>
     <% else %>
     <div class="bg">
-    <body>
       <div class="centered">
         <div class="form-signin">
         <img class="mb-4" src=<%= asset_path('logo.png') %> alt="" width="250">
@@ -27,5 +27,4 @@
         </div>
       </div>
     <% end %>
-  </body>
 </div>
