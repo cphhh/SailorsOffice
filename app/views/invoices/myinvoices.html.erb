@@ -4,14 +4,17 @@
       <thead>
         <tr>
           <th>Name</th>
-          <td></td>
+          <th></th>
           <th>Price</th>
-          <td></td>
+          <th></th>
           <th>Comment</th>
-          <td></td>
+          <th></th>
           <th>Regatta</th>
-          <td></td>
+          <th></th>
           <th>User</th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
 
@@ -28,10 +31,9 @@
             <td></td>
             <td><%= invoice.user.name%></td>
             <td></td>
-            <td><%= link_to "delete", invoice, method: :delete,
+            <td><%= link_to '<i class="fe fe-trash"></i>'.html_safe, invoice, method: :delete,
                                     data: { confirm: "You sure?" } %></td>
-            <td></td>
-            <td><%= link_to "edit", [:edit, invoice] %></td>
+            <td><%= link_to '<i class="fe fe-edit"></i>'.html_safe, [:edit, invoice] %></td>
           </tr>
         <% end %>
       </tbody>
