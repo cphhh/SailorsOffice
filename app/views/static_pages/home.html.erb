@@ -1,40 +1,31 @@
+    <% if logged_in? %>
+    <body>
+        <h3>Current Regattas</h3>
+        <%= render 'regattas/nextregattas' %>
 
+    <% else %>
+    <div class="bg">
+    <body>
+      <div class="centered">
+        <div class="form-signin">
+        <img class="mb-4" src="/assets/logo.png" alt="" width="250">
+          <%= form_for(:session, url: login_path) do |f| %>
 
-<% if logged_in? %>
-<h1>Tinto Racing Team</h1>
+            <%= f.label :email, class: 'sr-only'%>
+            <%= f.email_field :email, class: 'form-control', id: 'inputEmail', placeholder: 'Email address'%>
 
-    <h3>Current Regattas</h3>
-    <%= render 'regattas/nextregattas' %>
+            <%= f.label :password, class: 'sr-only'%>
+            <%= f.password_field :password, class: 'form-control', id: 'inputPassword', placeholder: 'Password'%>
 
-<% else %>
-<div class="center jumbotron" style="background-image: url(assets/bund_c.jpg); background-size: cover; height: 100%;
-width: 100%;">
-  <div class="inner">
-    <h1>Tinto Racing Team</h1>
-    <p>Member Login</p>
-  </div>
-</div>
+            <%= f.label :remember_me, class: "checkbox inline" do %>
+              <%= f.check_box :remember_me %>
+              <span style="color:white">Remember me on this computer</span>
+            <% end %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
-      <% end %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+            <%= f.submit "Log in", class: "btn btn-dark" %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-
-  </div>
+  </body>
 </div>
-
-
-<% end %>
