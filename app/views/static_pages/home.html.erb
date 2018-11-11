@@ -8,7 +8,7 @@
     <body>
       <div class="centered">
         <div class="form-signin">
-        <img class="mb-4" src="/assets/logo.png" alt="" width="250">
+        <img class="mb-4" src=<%= asset_path('logo.png') %> alt="" width="250">
           <%= form_for(:session, url: login_path) do |f| %>
 
             <%= f.label :email, class: 'sr-only'%>

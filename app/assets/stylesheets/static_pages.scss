@@ -11,7 +11,7 @@ body {
 }
 .bg {
   /* The image used */
-  background-image: url("/assets/ocean.jpg");
+  background-image: url(asset-path('ocean.jpg'));
 
   /* Full height */
   height: 100%;
