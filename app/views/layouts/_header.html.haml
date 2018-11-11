@@ -1,0 +1,55 @@
+.navbar.navbar-fixed-top.navbar-inverse
+  .container
+    = link_to image_tag("logo.png", class:"navbar-brand pull-left"), root_path
+    %nav
+      %ul.nav.navbar-nav.navbar-right
+        - if logged_in?
+          %li= link_to "Logout", logout_path, method: :delete
+
+.container-flex
+  %nav.col-md-2.sidebar
+    .sidebar-sticky
+      %ul.nav.flex-column
+        %h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+          %span Regattas
+
+        %li.nav-item
+          %a.nav-link{:href => "/regattas"}
+            %i.fe.fe-bar
+            All regattas
+
+        %li.nav-item
+          %a.nav-link{:href => "/myregattas"}
+            %i.fe.fe-heart
+            My regattas
+
+        %li.nav-item
+          %a.nav-link{:href => "/regattas/new"}
+            %i.fe.fe-plus
+            New regatta
+
+        %li.nav-item
+          %a.nav-link{:href => "/joinregattas"}
+            %i.fe.fe-list-task
+            Join regattas
+
+        %h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+          %span Balances
+
+        %li.nav-item
+          %a.nav-link{:href => "/balances"}
+            %i.fe.fe-bar
+            All balances
+
+        %h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+          %span Invoices
+
+        %li.nav-item
+          %a.nav-link{:href => "/invoices"}
+            %i.fe.fe-bar
+            All invoices
+
+        %li.nav-item
+          %a.nav-link{:href => "/myinvoices"}
+            %i.fe.fe-layer
+            My invoices
