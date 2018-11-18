@@ -4,12 +4,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <h1>Reminder</h1>
+    <h2>Please submit invoices for <%=@regatta.name%> regatta</h2>
+    <p>Dear <%=@regatta.users.first.name%>,</p>
 
-    <p>
-      You have successfully signed up to example.com,
+    <p>The <%=@regatta.name%> regatta is 2 days ago. Please submit all your invoices now.</p>
 
-    </p>
+    <p>The balance will be closed at the <%=Date.current + 7.days%>.</p>
 
-    <p>Thanks for joining and have a great day!</p>
+    <p>Cheers,</p>
+
+    <p>KrIschi</p>
   </body>
 </html>
