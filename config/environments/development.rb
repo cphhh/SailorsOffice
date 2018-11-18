@@ -57,8 +57,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
    :address              => "ara.uberspace.de",
    :port                 => 587,
-   :user_name            => 'tinto@bischof.dk',
-   :password             => 'TrinkenDich+38',
+   :user_name            => ENV["TB_NAME"],
+   :password             => ENV["TB_PASS"],
    :authentication       => "plain",
   :enable_starttls_auto => true
   }
