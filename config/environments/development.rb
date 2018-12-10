@@ -55,12 +55,14 @@ Rails.application.configure do
   #Mailer config
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-   :address              => "ara.uberspace.de",
+   :address              => 'ara.uberspace.de',
    :port                 => 587,
+   :domain               => 'ara.uberspace.de',
    :user_name            => ENV["TB_NAME"],
    :password             => ENV["TB_PASS"],
-   :authentication       => "plain",
-  :enable_starttls_auto => true
+   :authentication       => 'login',
+   :enable_starttls_auto => true
   }
+  config.action_mailer.raise_delivery_errors = true
 
 end

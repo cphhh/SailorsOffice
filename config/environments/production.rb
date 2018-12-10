@@ -1,4 +1,16 @@
 Rails.application.configure do
+
+  #Mailer config
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+   :address              => "ara.uberspace.de",
+   :port                 => 587,
+   :user_name            => ENV["TB_NAME"],
+   :password             => ENV["TB_PASS"],
+   :authentication       => "plain",
+  :enable_starttls_auto => true
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
