@@ -29,7 +29,7 @@ class SlackController < ApplicationController
       user = 5
     end
 
-    render :plain => "Die Rechnung von #{words.second} bei der #{regatta_name} Regatta über #{words.third}€ wurde erstellt.}"
+    render :plain => "Die Rechnung von #{words.first} bei der #{regatta_name} Regatta über #{words.second}€ wurde erstellt.}"
     Invoice.create(regatta_id: regattaid, user_id: user, name: words.second, price: words.third)
   end
 
