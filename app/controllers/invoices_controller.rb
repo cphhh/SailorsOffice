@@ -9,11 +9,18 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
-    if @invoice.save
-      flash[:success] = 'Added new Invoice'
-    else
-      flash[:danger] = 'Invoice not saved. Please check parameters!'
+    regatta_id = invoice_params.fetch(:regatta_id)
+
+    if Regatta.find(regatta_id).balances.first.closed == true
+      @invoice = Invoice.new(invoice_params)
+      flash[:danger] = "Die Abrechnung für die #{Regatta.find(regatta_id).name} Regatta wurde bereits am #{Regatta.find(regatta_id).balances.first.closing_date} geschlossen. Rechnung wurde nicht eingereicht."
+    elsif Regatta.find(regatta_id).balances.first.closed == false
+      @invoice = Invoice.new(invoice_params)
+      if @invoice.save
+        flash[:success] = 'Added new Invoice'
+      else
+        flash[:danger] = 'Invoice not saved. Please check parameters!'
+      end
     end
     render 'new'
   end
