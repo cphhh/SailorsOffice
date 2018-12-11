@@ -20,5 +20,6 @@ class BalanceMailer < ApplicationMailer
     @totalcosts = ((@costs / @users.count) + @supplement + @fee)
     @totalprofit = (@users.count*@supplement) + (@users.count*@fee)
     mail(to: user.email, subject: "Balance for #{regatta.name} regatta")
+    @balance.update(:closed => true, :closing_date => Date.today)
   end
 end
