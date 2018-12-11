@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+  %p
+    Dear #{@user.name},
+  %p
+    The balance for the #{@regatta.name} regatta is closed now. Below you will find the numbers.
+
+  %p Cheers,
+  %p KrIschi
+
+
+  = render 'layouts/balance'

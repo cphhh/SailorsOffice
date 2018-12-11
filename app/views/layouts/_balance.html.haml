@@ -1,0 +1,69 @@
+.col-md-8
+  %h2{:style => "text-align:left"} Balance for #{@balance.regatta.name} Regatta
+  %hr
+
+  %table{:class => "table table-hover"}
+    %tr
+      %td
+      %td
+      - @users.each do |user|
+        %td
+          %b= user.name
+
+    %tr
+      %td
+        %b Kosten
+      %td
+      - @users.each do |user|
+        %td= @costs / @users.count
+
+    %tr
+      %td Supplement
+      %td 5,0%
+      - @users.each do |user|
+        %td= @supplement
+
+    %tr
+      %td Fee
+      %td 5,00€/Day
+      - @users.each do |user|
+        %td= @fee
+
+    %tr
+      %td
+        %u Total costs
+      %td
+      - @users.each do |user|
+        %td= @totalcosts
+
+    %tr
+      %td
+        %b Expenses
+
+    %tr
+      %td
+        Total Expenses
+      %td
+      - @users.each do |user|
+        %td= @balance.regatta.invoices.where(:user_id => user.id).sum(:price)
+      %td
+        Subtotal
+      %td= @costs
+
+    %tr
+      %td
+        %b Total
+      %td
+      - @users.each do |user|
+        %td= (@totalcosts - @balance.regatta.invoices.where(:user_id => user.id).sum(:price)).round(2)
+      %td
+        %b Total Costs
+      %td= @costs + @totalprofit
+    %tr
+      %td
+      %td
+      - @users.each do |user|
+        %td
+      %td
+        Profit
+      %td= @totalprofit.round(2)
