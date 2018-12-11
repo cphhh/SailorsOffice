@@ -6,7 +6,7 @@ class SlackController < ApplicationController
     words = message.split
     user = params[:user_name]
     regatta_name = params[:channel_name]
-    regatta = Regatta.where(:name => regatta_name)
+    regatta = Regatta.where(name: regatta_name)
     regattaid = regatta[:id]
 
     if user == 'maximilianbischof'
