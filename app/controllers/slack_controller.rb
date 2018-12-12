@@ -45,7 +45,7 @@ class SlackController < ApplicationController
     basestring = "v0:#{timestamp}:#{request.body.read}"
     my_signature = "v0=#{OpenSSL::HMAC.hexdigest("SHA256", signing_secret, basestring)}"
 
-    request_verified == ActiveSupport::SecurityUtils.secure_compare(my_signature, signature)
+    request_verified = ActiveSupport::SecurityUtils.secure_compare(my_signature, signature)
 
     if request_verified == true
       if Regatta.where(name: regatta_name).take.balances.first.closed == true
