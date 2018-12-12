@@ -34,14 +34,14 @@ class SlackController < ApplicationController
     signature = request.headers["X-Slack-Signature"]
     signing_secret = ENV["SLACK_SECRET"]
 
-    #if Time.at(timestamp.to_i) < 5.minutes.ago
-      #return false # expired
-    #end
-
     basestring = "v0:#{timestamp}:#{request.body.read}"
     my_signature = "v0=#{OpenSSL::HMAC.hexdigest("SHA256", signing_secret, basestring)}"
 
     request_verified = ActiveSupport::SecurityUtils.secure_compare(my_signature, signature)
+
+    if Time.at(timestamp.to_i) < 5.minutes.ago
+      request_verified = false 
+    end
 
     if request_verified == true
       if Regatta.where(name: regatta_name).take.balances.first.closed == true
