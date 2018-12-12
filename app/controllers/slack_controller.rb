@@ -3,7 +3,7 @@ class SlackController < ApplicationController
 
   def create
 
-    slack_signing_secret = ENV["SLACK_SECRET"]
+    slack_signing_secret = "SLACK_SECRET"
     timestamp = request.headers["X-Slack-Request-Timestamp"]
 
     message  = params[:text]
