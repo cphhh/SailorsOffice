@@ -32,7 +32,7 @@ class SlackController < ApplicationController
 
     timestamp = request.headers["X-Slack-Request-Timestamp"]
     signature = request.headers["X-Slack-Signature"]
-    signing_secret = "SLACK_SECRET"
+    signing_secret = ENV["SLACK_SECRET"]
 
     #if Time.at(timestamp.to_i) < 5.minutes.ago
       #return false # expired
