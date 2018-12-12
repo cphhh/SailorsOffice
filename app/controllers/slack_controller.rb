@@ -55,7 +55,7 @@ class SlackController < ApplicationController
         render :plain => "Die Rechnung von #{words.first} bei der #{regatta_name} Regatta über #{words.second}€ wurde erstellt. #{request_verified?}"
       end
     else
-      render :plain => "Request nicht gültig. Request_verified: #{request_verified?}, Timestamp: #{timestamp}, Signature: #{signature}"
+      render :plain => "Request nicht gültig. Request_verified: #{request_verified}, Timestamp: #{timestamp}, Signature: #{signature}"
     end
   end
 end
