@@ -2,10 +2,6 @@ class SlackController < ApplicationController
   protect_from_forgery with: :null_session
 
   def create
-
-    slack_signing_secret = "SLACK_SECRET"
-    timestamp = request.headers["X-Slack-Request-Timestamp"]
-
     message  = params[:text]
     words = message.split
     user = params[:user_name]
@@ -36,7 +32,7 @@ class SlackController < ApplicationController
 
     timestamp = request.headers["X-Slack-Request-Timestamp"]
     signature = request.headers["X-Slack-Signature"]
-    signing_secret = ENV["SLACK_SECRET"]
+    signing_secret = "SLACK_SECRET"
 
     #if Time.at(timestamp.to_i) < 5.minutes.ago
       #return false # expired
