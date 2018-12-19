@@ -33,12 +33,14 @@ group :development do
   gem 'haml-lint'
 end
 
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5.0'
+end
+
 group :test do
-  gem 'rails-controller-testing', '1.0.2'
-  gem 'minitest',                 '5.10.3'
-  gem 'minitest-reporters',       '1.1.14'
-  gem 'guard',                    '2.14.1'
-  gem 'guard-minitest',           '2.4.6'
+  gem 'capybara', '~>2.7.1'
+	gem 'database_cleaner', '1.2.0'
 end
 
 group :production do
