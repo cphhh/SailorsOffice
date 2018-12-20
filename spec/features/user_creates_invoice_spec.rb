@@ -2,11 +2,12 @@ require "rails_helper"
 
 feature "User creates invoice" do
 	scenario "successfully" do
-		visit root_path
 		create_user
+		visit root_path
 		sign_in
-		click_on "All regattas"
-		#find(:css, 'i.fa.fa-eye.fa-lg').click
-		expect(page).to have_css 'h1', text: 'All regattas'   
+		create_regatta
+		create_invoice "Diesel"
+		find('#allinvoices').click
+		expect(page).to have_css 'td', text: 'Diesel'   
 	end
 end
