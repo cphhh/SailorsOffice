@@ -7,5 +7,7 @@ feature "User creates regatta" do
 		create_regatta
 		visit regattas_path
 		expect(page).to have_css 'td', text: 'Testregatta'   
+		visit balances_path
+		expect(page).to have_css 'td', text: 'Testregatta'   
 	end
 end
