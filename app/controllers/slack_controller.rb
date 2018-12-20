@@ -12,7 +12,7 @@ class SlackController < ApplicationController
       if regatta.balances.first.closed == true
         render :plain => "Die Abrechnung für die #{regatta[:name]} Regatta wurde bereits am #{regatta.balances.first.closing_date} geschlossen. Rechnung wurde nicht eingereicht."
       elsif regatta.balances.first.closed == false
-        Invoice.create(regatta_id: regattaid, user_id: user, name: parameter.first, price: parameter.second)
+        Invoice.create(regatta_id: regatta[:id], user_id: user, name: parameter.first, price: parameter.second)
         render :plain => "Die Rechnung von #{parameter.first} bei der #{regatta[:name]} Regatta über #{parameter.second}€ wurde erstellt."
       end
     else
