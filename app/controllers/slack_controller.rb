@@ -3,17 +3,23 @@ class SlackController < ApplicationController
 
   def create
     parameter = params[:text].split
-    user = User.where(slack_name: params[:user_name])[0][:id]
+    user = User.where(slack_name: params[:user_name])[0]
     regatta = Regatta.where(name: params[:channel_name])[0]
 
     valid_request = request_validation
 
     if valid_request == true
-      if regatta.balances.first.closed == true
-        render :plain => "Die Abrechnung für die #{regatta[:name]} Regatta wurde bereits am #{regatta.balances.first.closing_date} geschlossen. Rechnung wurde nicht eingereicht."
-      elsif regatta.balances.first.closed == false
-        Invoice.create(regatta_id: regatta[:id], user_id: user, name: parameter.first, price: parameter.second)
-        render :plain => "Die Rechnung von #{parameter.first} bei der #{regatta[:name]} Regatta über #{parameter.second}€ wurde erstellt."
+      if regatta.balance[:closed] == true
+        render :plain => "Die Abrechnung für die #{regatta[:name]} Regatta" \
+                         "wurde bereits am #{regatta.balance[:closing_date]}" \
+                         " geschlossen. Rechnung wurde nicht eingereicht."
+      elsif regatta.balance[:closed] == false
+        Invoice.create(regatta_id: regatta[:id], user_id: user[:id],
+                       name: parameter.first, price: parameter.second)
+
+        render :plain => "Die Rechnung von #{parameter.first} bei der" \
+                         " #{regatta[:name]} Regatta über #{parameter.second}€" \
+                         " wurde erstellt."
       end
     else
       render :plain => "Request nicht gültig."
