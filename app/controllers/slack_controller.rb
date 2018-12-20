@@ -9,11 +9,11 @@ class SlackController < ApplicationController
     valid_request = request_validation
 
     if valid_request == true
-      if Regatta.where(name: regatta_name).take.balances.first.closed == true
-        render :plain => "Die Abrechnung für die #{regatta_name} Regatta wurde bereits am #{Regatta.where(name: regatta_name).take.balances.first.closing_date} geschlossen. Rechnung wurde nicht eingereicht."
-      elsif Regatta.where(name: regatta_name).take.balances.first.closed == false
+      if regatta.take.balances.first.closed == true
+        render :plain => "Die Abrechnung für die #{regatta[:name]} Regatta wurde bereits am #{regatta.take.balances.first.closing_date} geschlossen. Rechnung wurde nicht eingereicht."
+      elsif regatta.take.balances.first.closed == false
         Invoice.create(regatta_id: regattaid, user_id: user, name: parameter.first, price: parameter.second)
-        render :plain => "Die Rechnung von #{parameter.first} bei der #{regatta_name} Regatta über #{parameter.second}€ wurde erstellt."
+        render :plain => "Die Rechnung von #{parameter.first} bei der #{regatta[:name]} Regatta über #{parameter.second}€ wurde erstellt."
       end
     else
       render :plain => "Request nicht gültig."
