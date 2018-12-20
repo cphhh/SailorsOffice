@@ -6,7 +6,7 @@ class SlackController < ApplicationController
     user = User.where(slack_name: params[:user_name])[0][:id]
     regatta = Regatta.where(name: params[:channel_name])[0]
 
-    request_validation
+    valid_request = request_validation
 
     if valid_request == true
       if Regatta.where(name: regatta_name).take.balances.first.closed == true
@@ -35,5 +35,7 @@ class SlackController < ApplicationController
     if Time.at(timestamp.to_i) < 5.minutes.ago
       valid_request = false
     end
+
+    return valid_request
   end
 end
