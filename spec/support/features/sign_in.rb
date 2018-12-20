@@ -7,7 +7,7 @@ module Features
 	end
 
 	def create_user 
-	@user = User.create(email: "peter@example.com", password: "Password", name: "Peter")
-	@user.save
+		@user = User.create(email: "peter@example.com", password: "Password", name: "Peter")
+		@user.save
 	end
 end
