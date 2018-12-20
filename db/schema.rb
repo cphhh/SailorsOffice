@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180819123240) do
+ActiveRecord::Schema.define(version: 20181220161057) do
 
   create_table "balances", force: :cascade do |t|
     t.integer "regatta_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20180819123240) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_digest"
+    t.string "slack_name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
