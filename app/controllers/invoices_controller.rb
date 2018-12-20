@@ -9,12 +9,15 @@ class InvoicesController < ApplicationController
   end
 
   def create
+    regatta = Regatta.find(invoice_params.fetch(:regatta_id))
     regatta_id = invoice_params.fetch(:regatta_id)
 
-    if Regatta.find(regatta_id).balances.first.closed == true
+    if regatta.balance[:closed] == true
       @invoice = Invoice.new(invoice_params)
-      flash[:danger] = "Die Abrechnung für die #{Regatta.find(regatta_id).name} Regatta wurde bereits am #{Regatta.find(regatta_id).balances.first.closing_date} geschlossen. Rechnung wurde nicht eingereicht."
-    elsif Regatta.find(regatta_id).balances.first.closed == false
+      flash[:danger] = "Die Abrechnung für die #{regatta[:name]} Regatta wurde" \
+                       " bereits am #{regatta.balance[:closing_date]} geschlossen." \
+                       " Rechnung wurde nicht eingereicht."
+    elsif regatta.balance[:closed] == false
       @invoice = Invoice.new(invoice_params)
       if @invoice.save
         flash[:success] = 'Added new Invoice'
