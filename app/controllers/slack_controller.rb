@@ -4,7 +4,7 @@ class SlackController < ApplicationController
   def create
     message  = params[:text]
     words = message.split
-    user = User.where(slack_name: params[:user_name])[:id]
+    user = User.where(slack_name: params[:user_name])[0][:id]
     regatta_name = params[:channel_name]
     #regatta = Regatta.where(name: regatta_name)
 
