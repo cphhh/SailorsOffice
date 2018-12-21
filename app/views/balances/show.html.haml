@@ -1,5 +1,5 @@
 .col-md-8
-  %h1{:style => "text-align:left"} Balance for #{@balance.regatta.name} Regatta
+  %h1{:style => "text-align:left"} Balance for #{@regatta.name} Regatta
   %hr
 
   %table{:class => "table table-hover"}
@@ -45,7 +45,7 @@
         Total Expenses
       %td
       - @users.each do |user|
-        %td= @balance.regatta.invoices.where(:user_id => user.id).sum(:price)
+        %td= @invoices.where(user_id: user.id).sum(:price)
       %td
         Subtotal
       %td= @costs
@@ -55,7 +55,7 @@
         %b Total
       %td
       - @users.each do |user|
-        %td= (@totalcosts - @balance.regatta.invoices.where(:user_id => user.id).sum(:price)).round(2)
+        %td= (@totalcosts - @invoices.where(user_id: user.id).sum(:price)).round(2)
       %td
         %b Total Costs
       %td= @costs + @totalprofit

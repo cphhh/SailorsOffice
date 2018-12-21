@@ -1,6 +1,8 @@
 # Regattas controller
 class RegattasController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :index, :myinvoices, :destroy, :new, :create, :update, :joinregattas, :myregattas]
+  before_action :logged_in_user, only: [:show, :edit, :index, :myinvoices,
+                                        :destroy, :new, :create, :update,
+                                        :joinregattas, :myregattas]
 
   def show
     @regatta = Regatta.find(params[:id])
@@ -21,7 +23,7 @@ class RegattasController < ApplicationController
       Balance.create(regatta_id: @regatta.id, closed: false)
       redirect_to @regatta
     else
-      flash[:dange] = 'Regatta not saved. Please check parameters!'
+      flash[:danger] = 'Regatta not saved. Please check parameters!'
       render 'new'
     end
   end
