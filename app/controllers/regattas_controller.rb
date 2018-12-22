@@ -43,12 +43,7 @@ class RegattasController < ApplicationController
   end
 
   def myregattas
-    # @regattas = Regatta.where(user_id: current_user.id)
     @regattas = current_user.regattas.all
-  end
-
-  def regatta_params
-    params.require(:regatta).permit(:name, :place, :startdate, :enddate)
   end
 
   def destroy
@@ -57,6 +52,13 @@ class RegattasController < ApplicationController
     flash[:success] = 'Regatta destroyed'
     redirect_to '/regattas'
   end
+
+  private
+
+  def regatta_params
+    params.require(:regatta).permit(:name, :place, :startdate, :enddate)
+  end
+
 
   def logged_in_user
     unless logged_in?
