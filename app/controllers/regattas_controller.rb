@@ -59,7 +59,6 @@ class RegattasController < ApplicationController
     params.require(:regatta).permit(:name, :place, :startdate, :enddate)
   end
 
-
   def logged_in_user
     unless logged_in?
       flash[:danger] = "Please log in."
