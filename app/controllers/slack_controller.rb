@@ -27,7 +27,7 @@ class SlackController < ApplicationController
   end
 
 	def indexregatta
-   	regattas = Regatta.where(startdate.year = Time.current.year)    
+   	regattas = Regatta.where(startdate.year: Time.current.year)    
     valid_request = request_validation
 
     if valid_request == true
