@@ -4,7 +4,7 @@ class SlackController < ApplicationController
   def create
     parameter = params[:text].split
     user = User.where(slack_name: params[:user_name])[0]
-    regatta = Regatta.where(name: params[:channel_name].upcase)[0]
+    regatta = Regatta.where(name: params[:channel_name].capitalize)[0]
 
     valid_request = request_validation
 
