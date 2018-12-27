@@ -31,7 +31,7 @@ class SlackController < ApplicationController
     valid_request = request_validation
 
     if valid_request == true
-                       string = ""
+                       string = "Alle Regatten #{Time.current.year}:\n"
                        regattas.each do |regatta|
                                string = string + "#{regatta.name}\n"
                        end
