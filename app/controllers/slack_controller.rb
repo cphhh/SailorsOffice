@@ -25,22 +25,22 @@ class SlackController < ApplicationController
       render :plain => "Request nicht gültig."
     end
   end
-	
+
 	def indexregatta
-		regattas = Regatta.where(startdate.year = Time.current.year)	
+   	regattas = Regatta.where(startdate.year = Time.current.year)    
     valid_request = request_validation
 
     if valid_request == true
-			string = ""
-			regattas.each do |regatta|
-				string = string + "#{regatta.name}\n"
-			end
+                       string = ""
+                       regattas.each do |regatta|
+                               string = string + "#{regatta.name}\n"
+                       end
       render :plain => string
     else
       render :plain => "Request nicht gültig."
-		end
-	end
-  
+    end
+  end
+
   private
 
   def request_validation
