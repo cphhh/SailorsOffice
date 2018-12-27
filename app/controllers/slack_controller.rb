@@ -7,8 +7,9 @@ class SlackController < ApplicationController
     regatta = Regatta.where(name: params[:channel_name].capitalize)[0]
 
     valid_request = request_validation
-
-    if valid_request == true
+		if regatta.blank?
+			render :plain => "The #{params[:channel_name].capitalize} regatta cant't be found in the Tintoapp. Please create #{params[:channel_name].capitalize} regatta in Tintoapp."
+    elsif valid_request == true
       if regatta.balance[:closed] == true
         render :plain => "Die Abrechnung für die #{regatta[:name]} Regatta" \
                          "wurde bereits am #{regatta.balance[:closing_date]}" \
