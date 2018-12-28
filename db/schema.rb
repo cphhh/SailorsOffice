@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181220161057) do
+ActiveRecord::Schema.define(version: 20181228144129) do
 
   create_table "balances", force: :cascade do |t|
     t.integer "regatta_id"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20181220161057) do
     t.date "enddate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "supplement"
+    t.float "fee"
   end
 
   create_table "regattas_users", id: false, force: :cascade do |t|
