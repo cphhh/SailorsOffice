@@ -17,10 +17,10 @@
         <%= f.date_field :enddate, class: 'form-control' %>
 
         <%= f.label :supplement %>
-        <%= f.text_field :supplement, class: 'form-control' %>
+        <%= f.text_field :supplement, class: 'form-control', placeholder: "5,00" %>
         
         <%= f.label :fee %>
-        <%= f.text_field :fee, class: 'form-control' %>
+        <%= f.text_field :fee, class: 'form-control', placeholder: "5,00" %>
 
 				<%= f.submit "Create regatta", class: "btn btn-primary" %>
       <% end %>

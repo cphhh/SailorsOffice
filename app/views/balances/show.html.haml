@@ -19,13 +19,13 @@
 
     %tr
       %td Supplement
-      %td 5,0%
+      %td #{@supp}%
       - @users.each do |user|
         %td= @supplement
 
     %tr
       %td Fee
-      %td 5,00€/Day
+      %td #{@feerate}€/Day
       - @users.each do |user|
         %td= @fee
 
