@@ -18,11 +18,19 @@ class BalancesController < ApplicationController
 
   def show
     @regatta = Balance.find(params[:id]).regatta
+		@feerate = Balance.find(params[:id]).regatta.fee
+		@supp = Balance.find(params[:id]).regatta.supplement 
     @invoices = @regatta.invoices
     @users = @regatta.users.all
     @costs = @invoices.all.sum(:price)
-    @supplement = (((@costs/@users.count)/100)*5).round(2)
-    @fee = ((@regatta.enddate - @regatta.startdate).to_i + 1)*5
+
+		if @users.count == 0
+			@supplement = 0
+		else
+    	@supplement = (((@costs/@users.count)/100)*@supp).round(2)
+		end
+
+    @fee = ((@regatta.enddate - @regatta.startdate).to_i + 1)*@feerate
     @totalcosts = ((@costs / @users.count) + @supplement + @fee)
     @totalprofit = (@users.count*@supplement) + (@users.count*@fee)
   end

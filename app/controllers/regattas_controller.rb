@@ -18,6 +18,15 @@ class RegattasController < ApplicationController
 
   def create
     @regatta = Regatta.new(regatta_params)
+
+		if @regatta.fee.blank?
+			@regatta.fee = "5,00"
+		end
+		
+		if @regatta.supplement.blank?
+			@regatta.supplement = "5,00"
+		end
+
     if @regatta.save
       flash[:success] = 'Added new regatta'
       Balance.create(regatta_id: @regatta.id, closed: false)
@@ -43,12 +52,7 @@ class RegattasController < ApplicationController
   end
 
   def myregattas
-    # @regattas = Regatta.where(user_id: current_user.id)
     @regattas = current_user.regattas.all
-  end
-
-  def regatta_params
-    params.require(:regatta).permit(:name, :place, :startdate, :enddate)
   end
 
   def destroy
@@ -56,6 +60,12 @@ class RegattasController < ApplicationController
     Regatta.find(params[:id]).destroy
     flash[:success] = 'Regatta destroyed'
     redirect_to '/regattas'
+  end
+
+  private
+
+  def regatta_params
+    params.require(:regatta).permit(:name, :place, :startdate, :enddate, :supplement, :fee)
   end
 
   def logged_in_user

@@ -4,9 +4,13 @@ class BalanceMailer < ApplicationMailer
   default "Message-ID"=>"#{Digest::SHA2.hexdigest(Time.now.to_i.to_s)}@bischof.dk"
 
   def invoice_reminder(regatta, user)
-    @regatta = regatta
-    @user = user
-    mail(to: user.email, subject: "Please submit invoices from #{regatta.name} regatta")
+		begin
+    	@regatta = regatta
+    	@user = user
+    	mail(to: user.email, subject: "Please submit invoices from #{regatta.name} regatta")
+		rescue Net::SMTPAuthenticationError
+			retry
+		end
   end
 
   def send_balance(regatta, user)

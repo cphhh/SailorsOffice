@@ -4,11 +4,12 @@ class SlackController < ApplicationController
   def create
     parameter = params[:text].split
     user = User.where(slack_name: params[:user_name])[0]
-    regatta = Regatta.where(name: params[:channel_name])[0]
+    regatta = Regatta.where(name: params[:channel_name].capitalize)[0]
 
     valid_request = request_validation
-
-    if valid_request == true
+		if regatta.blank?
+			render :plain => "The #{params[:channel_name].capitalize} regatta can't be found in the Tintoapp. Please create #{params[:channel_name].capitalize} regatta in Tintoapp."
+    elsif valid_request == true
       if regatta.balance[:closed] == true
         render :plain => "Die Abrechnung für die #{regatta[:name]} Regatta" \
                          "wurde bereits am #{regatta.balance[:closing_date]}" \
@@ -21,6 +22,21 @@ class SlackController < ApplicationController
                          " #{regatta[:name]} Regatta über #{parameter.second}€" \
                          " wurde erstellt."
       end
+    else
+      render :plain => "Request nicht gültig."
+    end
+  end
+
+	def indexregatta
+   	regattas = Regatta.where('extract(year  from startdate) = ?', Time.current.year)    
+    valid_request = request_validation
+
+    if valid_request == true
+                       string = "Alle Regatten #{Time.current.year}:\n"
+                       regattas.each do |regatta|
+                               string = string + "#{regatta.name}\n"
+                       end
+      render :plain => string
     else
       render :plain => "Request nicht gültig."
     end

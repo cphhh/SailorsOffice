@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   post 'slack/create'
+	post 'slack/indexregatta'
 
   root 'static_pages#home'
 
