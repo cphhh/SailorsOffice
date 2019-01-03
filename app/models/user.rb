@@ -10,7 +10,9 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-  has_and_belongs_to_many :regattas
+	has_many :regatta_users
+	has_many :regattas, :through => :regatta_users
+
   has_many :invoices
 
   # Returns the hash digest of the given string.

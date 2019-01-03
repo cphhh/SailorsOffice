@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181228144129) do
+ActiveRecord::Schema.define(version: 20190103161805) do
 
   create_table "balances", force: :cascade do |t|
     t.integer "regatta_id"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20181228144129) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "regatta_users", force: :cascade do |t|
+    t.integer "regatta_id", null: false
+    t.integer "user_id", null: false
+    t.index ["regatta_id"], name: "index_regatta_users_on_regatta_id"
+    t.index ["user_id"], name: "index_regatta_users_on_user_id"
+  end
+
   create_table "regattas", force: :cascade do |t|
     t.string "name"
     t.string "place"
@@ -39,11 +46,6 @@ ActiveRecord::Schema.define(version: 20181228144129) do
     t.datetime "updated_at", null: false
     t.float "supplement"
     t.float "fee"
-  end
-
-  create_table "regattas_users", id: false, force: :cascade do |t|
-    t.integer "regatta_id"
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
