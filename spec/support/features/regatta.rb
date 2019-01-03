@@ -9,4 +9,10 @@ module Features
 		fill_in "regatta_fee", with: fee
 		click_on "Create regatta"
 	end
+	
+	def join_regatta
+		find('#joinregattas').click
+		page.check('user[regatta_ids][]')
+		click_on "Send"
+	end
 end
