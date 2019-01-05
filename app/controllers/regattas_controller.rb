@@ -22,7 +22,7 @@ class RegattasController < ApplicationController
 		if @regatta.fee.blank?
 			@regatta.fee = "5,00"
 		end
-		
+
 		if @regatta.supplement.blank?
 			@regatta.supplement = "5,00"
 		end
@@ -44,11 +44,13 @@ class RegattasController < ApplicationController
   def update
     @regatta = Regatta.find(params[:id])
     @regatta.update(regatta_params)
-    redirect_to regattas_path
+    redirect_to '/joinregattas'
   end
 
   def joinregattas
     @user = User.find(current_user.id)
+    @users = User.all
+    @regattas = Regatta.all
   end
 
   def myregattas
@@ -65,7 +67,9 @@ class RegattasController < ApplicationController
   private
 
   def regatta_params
-    params.require(:regatta).permit(:name, :place, :startdate, :enddate, :supplement, :fee)
+    params.require(:regatta).permit(
+      :name, :place, :startdate, :enddate, :supplement, :fee, user_ids: []
+    )
   end
 
   def logged_in_user

@@ -1,52 +1,39 @@
 <div class="col-md-8">
-  <h1 style="text-align:left">Join regatta</h1>
+  <h1 style="text-align:left">Add crew</h1>
   <hr>
-  <div class="row">
-    <div class="col-xs-2">
-      <b>Name</b>
-    </div>
 
-    <div class="col-xs-2">
-      <b>Place</b>
-    </div>
+  <table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+  	    <th>Place</th>
+    	  <th>Startdate</th>
+      	<th>Enddate</th>
+      <% @users.each do |user| %>
+        <th><%= user.name %></th>
+      <% end %>
+        <th></th>
+			</tr>
+		</thead>
 
-    <div class="col-xs-2">
-      <b>Startdate</b>
-    </div>
+		<tbody>
+	  	<% @regattas.each do |regatta| %>
+				<tr>
+			    <%= form_for(regatta) do |f| %>
+	 	      <td><%=regatta.name%></td>
+    	    <td><%=regatta.place%></td>
+     	    <td><%=regatta.startdate%></td>
+      	  <td><%=regatta.enddate%></td>
 
-    <div class="col-xs-2">
-      <b>Enddate</b>
-    </div>
+         	  <%= f.collection_check_boxes :user_ids, User.all, :id, :name do |b| %>
+              <td><%= b.check_box(class: "check_box") %></td>
+            <% end %>
 
-    <div class="col-xs-2">
-      <b>Participate?</b>
-    </div>
-  </div>
+            <td><%= f.submit "Save", class: "btn-primary" %></td>
 
-  <%= form_for(@user) do |f| %>
-    <%= f.collection_check_boxes :regatta_ids, Regatta.all, :id, :name do |b| %>
-      <div class="row">
-        <div class="col-xs-2">
-          <%=  b.text %>
-        </div>
-
-        <div class="col-xs-2">
-          <%=b.object.place%>
-        </div>
-
-        <div class="col-xs-2">
-          <%=b.object.startdate%>
-        </div>
-
-        <div class="col-xs-2">
-          <%=b.object.enddate%>
-        </div>
-
-        <div class="col-xs-2">
-          <%= b.check_box(class: "check_box") %>
-        </div>
-      </div>
-    <% end %>
-    <%= f.submit "Send", class: "btn-primary" %>
-  <% end %>
+    	    <% end %>
+			  </tr>
+		  <% end %>
+		</tbody>
+	</table>
 </div>
