@@ -12,12 +12,12 @@ feature "User views balance" do
 		find('tbody').find(:xpath, ".//a[i[contains(@class, 'fe fe-eye')]]").click
 
 		expect(page).to have_css 'h1', text: 'Balance for Testregatta'
-		td = page.find(:css, 'td', text: 'Subtotal') # find the id td with text of exactly 22
-		tr = td.find(:xpath, './parent::tr') # get the parent tr of the td
+		td = page.find(:css, 'td', text: 'Subtotal')
+		tr = td.find(:xpath, './parent::tr')
 		expect(tr).to have_css('td', text: '50.0')
 
-		td = page.find(:css, 'td', text: 'Total Costs') # find the id td with text of exactly 22
-		tr = td.find(:xpath, './parent::tr') # get the parent tr of the td
+		td = page.find(:css, 'td', text: 'Total Costs')
+		tr = td.find(:xpath, './parent::tr')
 		expect(tr).to have_css('td', text: '82.5')
 	end
 end

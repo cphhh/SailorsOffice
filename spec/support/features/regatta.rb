@@ -1,5 +1,5 @@
 module Features
-	def create_regatta(name, place, startdate, enddate, fee, supplement)	
+	def create_regatta(name, place, startdate, enddate, fee, supplement)
 		find('#newregatta').click
 	  fill_in "regatta_name", with: name
 		fill_in "regatta_place", with: place
@@ -9,10 +9,10 @@ module Features
 		fill_in "regatta_fee", with: fee
 		click_on "Create regatta"
 	end
-	
+
 	def join_regatta
 		find('#joinregattas').click
-		page.check('user[regatta_ids][]')
-		click_on "Send"
+		page.check('regatta[user_ids][]')
+		click_on "Save"
 	end
 end
