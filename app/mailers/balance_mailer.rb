@@ -19,8 +19,10 @@ class BalanceMailer < ApplicationMailer
     @balance = @regatta.balance
     @users = @balance.regatta.users.all
     @costs = @balance.regatta.invoices.all.sum(:price)
-    @supplement = (((@costs/@users.count)/100)*5).round(2)
-    @fee = ((@balance.regatta.enddate - @balance.regatta.startdate).to_i + 1)*5
+    @feerate = @balance.regatta.fee
+		@supp = @balance.regatta.supplement
+    @supplement = (((@costs/@users.count)/100)*@supp).round(2)
+    @fee = ((@balance.regatta.enddate - @balance.regatta.startdate).to_i + 1)*@feerate
     @totalcosts = ((@costs / @users.count) + @supplement + @fee)
     @totalprofit = (@users.count*@supplement) + (@users.count*@fee)
 		@invoices = @balance.regatta.invoices

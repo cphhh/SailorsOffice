@@ -34,7 +34,7 @@
         %u Total costs
       %td
       - @users.each do |user|
-        %td= @totalcosts
+        %td= @totalcosts.round(2)
 
     %tr
       %td
@@ -58,7 +58,7 @@
         %td= (@totalcosts - @balance.regatta.invoices.where(:user_id => user.id).sum(:price)).round(2)
       %td
         %b Total Costs
-      %td= @costs + @totalprofit
+      %td= (@costs + @totalprofit).round(2)
     %tr
       %td
       %td
