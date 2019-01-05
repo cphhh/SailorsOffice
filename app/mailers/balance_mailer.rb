@@ -16,7 +16,7 @@ class BalanceMailer < ApplicationMailer
   def send_balance(regatta, user)
     @regatta = regatta
     @user = user
-    @balance = @regatta.balances.first
+    @balance = @regatta.balance
     @users = @balance.regatta.users.all
     @costs = @balance.regatta.invoices.all.sum(:price)
     @supplement = (((@costs/@users.count)/100)*5).round(2)

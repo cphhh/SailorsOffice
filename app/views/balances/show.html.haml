@@ -12,10 +12,10 @@
 
     %tr
       %td
-        %b Kosten
+        %b Costs
       %td
       - @users.each do |user|
-        %td= @costs / @users.count
+        %td= (@costs / @users.count).round(2)
 
     %tr
       %td Supplement
