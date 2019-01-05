@@ -12,10 +12,10 @@
 
     %tr
       %td
-        %b Kosten
+        %b Costs
       %td
       - @users.each do |user|
-        %td= @costs / @users.count
+        %td= (@costs / @users.count).round(2)
 
     %tr
       %td Supplement
@@ -67,3 +67,34 @@
       %td
         Profit
       %td= @totalprofit.round(2)
+
+  %h2{:style => "text-align:left"} All invoices for #{@balance.regatta.name} Regatta
+  %hr
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Name
+        %th
+        %th Price
+        %th
+        %th Comment
+        %th
+        %th Regatta
+        %th
+        %th User
+        %th
+        %th
+        %th
+    %tbody
+      - @invoices.each do |invoice|
+        %tr
+          %td= invoice.name
+          %td
+          %td= invoice.price
+          %td
+          %td= invoice.comment
+          %td
+          %td= invoice.regatta.name
+          %td
+          %td= invoice.user.name
+          %td
