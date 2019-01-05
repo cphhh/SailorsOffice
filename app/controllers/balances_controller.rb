@@ -1,6 +1,6 @@
 # BalancesController
 class BalancesController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :index, :new, :create]
+  before_action :logged_in_user, only: [:show, :edit, :index, :new, :create, :update]
 
   def new
     @balance = Balance.new
@@ -19,7 +19,7 @@ class BalancesController < ApplicationController
   def show
     @regatta = Balance.find(params[:id]).regatta
 		@feerate = Balance.find(params[:id]).regatta.fee
-		@supp = Balance.find(params[:id]).regatta.supplement 
+		@supp = Balance.find(params[:id]).regatta.supplement
     @invoices = @regatta.invoices
     @users = @regatta.users.all
     @costs = @invoices.all.sum(:price)
@@ -40,6 +40,14 @@ class BalancesController < ApplicationController
   def index
     @balances = Balance.all
   end
+
+  def updateclosed
+    @balance = Balance.find(params[:balance_id])
+    @balance.update_attributes(closed: params[:button])
+    redirect_to balances_path
+  end
+
+  private
 
   def balance_params
     params.require(:balance).permit(:regatta_id, :closed, :closed_date)

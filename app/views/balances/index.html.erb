@@ -20,9 +20,15 @@
           <td><%= balance.regatta.name%></td>
           <td></td>
           <td><%= if balance.closed == false
-                    "open"
+                    form_for(balance, url: balance_updateclosed_path(balance), method: :put) do |f|
+                      button_tag(type: "submit", class: "fe fe-unlock", value: true) do
+                      end
+                    end
                   else
-                    "closed"
+                    form_for(balance, url: balance_updateclosed_path(balance), method: :put) do |f|
+                      button_tag(type: "submit", class: "fe fe-lock", value: false) do
+                      end
+                    end
                   end %></td>
           <td></td>
           <td><%= if balance.closing_date.blank? == true

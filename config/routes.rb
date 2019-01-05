@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/myinvoices',  to: 'invoices#myinvoices'
   get '/regattainvoices',  to: 'invoices#regattainvoices'
 
-  resources :balances
+  resources :balances do
+    put :updateclosed
+  end
 
 end
