@@ -1,6 +1,6 @@
 # BalancesController
 class BalancesController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :index, :new, :create, :update]
+  before_action :logged_in_user, only: [:show, :edit, :index, :new, :create, :updateclosed]
 
   def new
     @balance = Balance.new
