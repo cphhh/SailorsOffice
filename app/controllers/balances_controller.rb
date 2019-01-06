@@ -44,6 +44,11 @@ class BalancesController < ApplicationController
   def updateclosed
     @balance = Balance.find(params[:balance_id])
     @balance.update_attributes(closed: params[:button])
+
+		if params[:button] == "true"
+			@balance.update_attributes(closing_date: Date.today)
+		end 
+
     redirect_to balances_path
   end
 
