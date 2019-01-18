@@ -9,7 +9,7 @@ class RegattasController < ApplicationController
   end
 
   def index
-    @regattas = Regatta.all
+    @regattas = Regatta.all.order(startdate: :asc)
   end
 
   def new
@@ -50,7 +50,7 @@ class RegattasController < ApplicationController
   def joinregattas
     @user = User.find(current_user.id)
     @users = User.all
-    @regattas = Regatta.all
+    @regattas = Regatta.all.order(startdate: :asc)
   end
 
   def myregattas
