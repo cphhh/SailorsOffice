@@ -28,13 +28,13 @@ class SlackController < ApplicationController
   end
 
 	def indexregatta
-   	regattas = Regatta.where('extract(year  from startdate) = ?', Time.current.year)    
+   	regattas = Regatta.where('extract(year  from startdate) = ?', Time.current.year)
     valid_request = request_validation
 
     if valid_request == true
                        string = "Alle Regatten #{Time.current.year}:\n"
                        regattas.each do |regatta|
-                               string = string + "#{regatta.name}\n"
+                               string = string + "#{regatta.name} | #{regatta.startdate} - #{regatta.enddate} | #{regatta.users.all.map(&:name).flatten.join(',')}\n\n"
                        end
       render :plain => string
     else
