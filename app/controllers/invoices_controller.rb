@@ -7,6 +7,7 @@ class InvoicesController < ApplicationController
   def new
     @invoice = Invoice.new
     @user = current_user
+		@users = User.all
     @regatta_id = regatta_params.fetch(:regatta_id)
   end
 

@@ -13,9 +13,10 @@
         <%= f.label :comment %>
         <%= f.text_field :comment, class: 'form-control' %>
 
-        <%= f.hidden_field :regatta_id, :value => @regatta_id.to_s %>
+				<%= f.label :user %>
+				<%= f.select(:user_id, options_for_select(User.all.map { |u| [u.name, u.id]}, selected: current_user.id)) %>
 
-        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :regatta_id, :value => @regatta_id.to_s %>
 
         <%= f.submit "Create invoice", class: "btn btn-primary" %>
       <% end %>
