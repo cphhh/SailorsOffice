@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post 'slack/create'
 	post 'slack/indexregatta'
 
-  root 'regattas#index'
+  root 'static_pages/home'
 
   get 'static_pages/home'
 
