@@ -68,14 +68,13 @@ class InvoicesController < ApplicationController
     redirect_to '/invoices'
   end
 
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
-
   private
+	def logged_in_user
+		unless logged_in?
+			flash[:danger] = "Please log in."
+			redirect_to login_url
+		end
+	end
 
   def invoice_params
     params.require(:invoice).permit(

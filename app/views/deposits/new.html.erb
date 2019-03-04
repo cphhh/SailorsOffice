@@ -1,0 +1,17 @@
+<div class="col-md-2"></div>
+<div class="col-md-6">
+  <h1 style="text-align:left">New Deposit</h1>
+  <hr>
+      <%= form_for(@deposit) do |f| %>
+
+        <%= f.label :amount %>
+        <%= f.text_field :amount, class: 'form-control' %>
+
+				<%= f.label :user_id %>
+				<%= f.select(:user_id, options_for_select(User.all.map { |u| [u.name, u.id]}, selected: current_user.id)) %>
+
+        <%= f.hidden_field :date, :value => Date.today %>
+
+        <%= f.submit "Create deposit", class: "btn btn-primary" %>
+      <% end %>
+    </div>

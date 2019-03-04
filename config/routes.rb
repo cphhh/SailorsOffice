@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :regattas
+	resources :deposits
   get '/joinregattas',  to: 'regattas#joinregattas'
   get '/myregattas',  to: 'regattas#myregattas'
 

@@ -14,6 +14,7 @@ class User < ApplicationRecord
 	has_many :regattas, :through => :regatta_users
 
   has_many :invoices
+	has_many :deposits
 
   # Returns the hash digest of the given string.
   def User.digest(string)

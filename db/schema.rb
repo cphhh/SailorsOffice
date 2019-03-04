@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190302105139) do
+ActiveRecord::Schema.define(version: 20190304161036) do
 
   create_table "balances", force: :cascade do |t|
     t.integer "regatta_id"
     t.boolean "closed"
     t.date "closing_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deposits", force: :cascade do |t|
+    t.float "amount"
+    t.date "date"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
