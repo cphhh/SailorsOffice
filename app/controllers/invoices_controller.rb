@@ -39,6 +39,12 @@ class InvoicesController < ApplicationController
 
   def edit
     @invoice = Invoice.find(params[:id])
+		todayminus = Date.today - 200
+		todayplus = Date.today + 200
+		valid_regattas = Regatta.joins(:balance).where('balances.closed == ?', false)
+		@regattas = valid_regattas.order(startdate: :asc).where('startdate > ? AND startdate < ?', todayminus, todayplus)
+		@regatta_id = Regatta.all.find(@invoice.regatta_id).id
+		@user_id = User.all.find(@invoice.user_id).id
   end
 
   def update
@@ -68,13 +74,14 @@ class InvoicesController < ApplicationController
     redirect_to '/invoices'
   end
 
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
   private
-	def logged_in_user
-		unless logged_in?
-			flash[:danger] = "Please log in."
-			redirect_to login_url
-		end
-	end
 
   def invoice_params
     params.require(:invoice).permit(

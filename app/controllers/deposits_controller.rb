@@ -15,7 +15,6 @@ class DepositsController < ApplicationController
 			flash[:danger] = 'Deposit not saved. Please check parameters!'
 			redirect_to '/deposits/new'
 		end
-
 	end
 
   def index

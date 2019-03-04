@@ -31,9 +31,11 @@
             <td></td>
             <td><%= @user.find(invoice.user_id).name%></td>
             <td></td>
-            <td><%= link_to '<i class="fe fe-trash"></i>'.html_safe, invoice, method: :delete,
-                                    data: { confirm: "You sure?" } %></td>
-            <td><%= link_to '<i class="fe fe-edit"></i>'.html_safe, [:edit, invoice] %></td>
+            <% if invoice.regatta.balance[:closed] == false %>
+	            <td><%= link_to '<i class="fe fe-trash"></i>'.html_safe, invoice, method: :delete,
+	                                    data: { confirm: "You sure?" } %></td>
+	            <td><%= link_to '<i class="fe fe-edit"></i>'.html_safe, [:edit, invoice] %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

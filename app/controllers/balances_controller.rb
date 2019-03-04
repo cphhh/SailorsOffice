@@ -47,7 +47,9 @@ class BalancesController < ApplicationController
 
 		if params[:button] == "true"
 			@balance.update_attributes(closing_date: Date.today)
-		end 
+		else
+			@balance.update_attributes(closing_date: nil)
+		end
 
     redirect_to balances_path
   end
