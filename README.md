@@ -27,7 +27,8 @@ User USER
 * `sudo dokku apps:create tintoapp`
 * `dokku postgres:create tintoapp-database`
 * `dokku postgres:link tintoapp-database tintoapp`
-* From local machine: ```
+* From local machine:
+```
 git remote add dokku SERVER:tintoapp
 git push dokku master
 ```
@@ -43,7 +44,8 @@ git push dokku master
 * ´ssh-keygen -o`
 * Add ssh key to backup server: `cat ~/.ssh/id_rsa.pub | ssh scalewaycnmp 'cat >> .ssh/authorized_keys'`
 
-* Run bash script in crontab with `bash dbbackup.sh` Script:```bash
+* Run bash script in crontab with `bash dbbackup.sh` Script:
+```bash
 name=$(date -d "today" +"%Y%m%d")
 dokku postgres:export tintoapp-database > "/home/USER/$name.dump"
 scp "$name.dump" USER@SERVER:/home/USER/tintoappbackup/
