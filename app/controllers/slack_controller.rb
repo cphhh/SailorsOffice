@@ -42,6 +42,32 @@ class SlackController < ApplicationController
     end
   end
 
+	def create_deposit
+		amount = params[:text]
+		user = User.where(slack_name: params[:user_name])[0]
+		date = Date.today
+
+		valid_request = request_validation
+
+		if valid_request == true
+				Deposit.create(amount: amount, user_id: user[:id])
+
+				render :plain => "Die Einzahlung von #{amount} wurde erstellt."
+			end
+		else
+			render :plain => "Request nicht gültig."
+		end
+	end
+
+	def help
+		if valid_request == true
+			render :plain => '/i [name] [price] - Creates new invoice in regatta channel'
+			render :plain => '/r - Shows regattas'
+			render :plain => '/d [amount] - Create deposit'
+			render :plain => '/help - Get this help'
+		else
+	end
+
   private
 
   def request_validation
