@@ -1,6 +1,8 @@
 # StaticPagesController
 class StaticPagesController < ApplicationController
   def home
-    @nextregattas = Regatta.order(startdate: :asc).first(5)
+		sixweeksago = Date.today - 42
+		insixweeks = Date.today + 42
+    @regattas = Regatta.order(startdate: :asc).where('startdate > ? AND startdate < ?', sixweeksago, insixweeks )
   end
 end

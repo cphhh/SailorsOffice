@@ -1,0 +1,35 @@
+%table.table.table-striped
+	%thead
+		%tr
+			%th Name
+			%th
+			%th Place
+			%th
+			%th Startdate
+			%th
+			%th Enddat
+			%th
+			%th Crew
+			%th
+			%th
+			%th
+			%th
+			%th Invoice
+	%tbody
+		- @regattas.each do |regatta|
+			%tr
+				%td= regatta.name
+				%td
+				%td= regatta.place
+				%td
+				%td= regatta.startdate
+				%td
+				%td= regatta.enddate
+				%td
+				%td= regatta.users.all.map(&:name).flatten.join(',')
+				%td
+				%td= link_to '<i class="fe fe-trash"></i>'.html_safe, regatta, method: :delete, |
+						data: { confirm: "You sure?" }                                             |
+				%td= link_to '<i class="fe fe-edit"></i>'.html_safe, [:edit, regatta]
+				%td
+				%td= link_to '<i class="fe fe-plus" id="newinvoice"></i>'.html_safe, {:controller => "invoices", :action => "new", :regatta_id => regatta.id }
