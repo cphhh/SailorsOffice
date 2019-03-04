@@ -5,7 +5,8 @@
 * `apt-get update`
 * `apt-get upgrade`
 * SSH Listening port ändern: `nano /etc/ssh/sshd_config` Restart service: `/etc/init.d/ssh restart`
-* Edit ssh config: `sudo nano .ssh/config` Add new ssh connection: ```
+* Edit ssh config: `sudo nano .ssh/config` Add new ssh connection:
+```
 Host SERVERNAME
 HostName IP/URL
 Port PORT
@@ -20,9 +21,8 @@ User USER
 * `/etc/init.d/ssh restart`
 
 ### Dokku installieren und App anlegen
-* ```
-wget https://raw.githubusercontent.com/dokku/dokku/v0.14.6/bootstrap.sh;
-sudo DOKKU_TAG=v0.14.6 bash bootstrap.sh```
+* `wget https://raw.githubusercontent.com/dokku/dokku/v0.14.6/bootstrap.sh;`
+`sudo DOKKU_TAG=v0.14.6 bash bootstrap.sh`
 * `sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git`
 * `sudo dokku apps:create tintoapp`
 * `dokku postgres:create tintoapp-database`
