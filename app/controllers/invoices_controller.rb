@@ -41,7 +41,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
 		todayminus = Date.today - 200
 		todayplus = Date.today + 200
-		valid_regattas = Regatta.joins(:balance).where('balances.closed == ?', false)
+		valid_regattas = Regatta.joins(:balance).where('balances.closed = ?', false)
 		@regattas = valid_regattas.order(startdate: :asc).where('startdate > ? AND startdate < ?', todayminus, todayplus)
 		@regatta_id = Regatta.all.find(@invoice.regatta_id).id
 		@user_id = User.all.find(@invoice.user_id).id
