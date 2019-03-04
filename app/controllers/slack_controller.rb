@@ -61,10 +61,7 @@ class SlackController < ApplicationController
 	def help
 		valid_request = request_validation
 		if valid_request == true
-			render :plain => '/i [name] [price] - Creates new invoice in regatta channel'
-			render :plain => '/r - Shows regattas'
-			render :plain => '/d [amount] - Create deposit'
-			render :plain => '/help - Get this help'
+			render :plain => '/i [name] [price] - Creates new invoice in regatta channel | /r - Shows regattas | /d [amount] - Create deposit'
 		end
 	end
 
