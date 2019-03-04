@@ -53,7 +53,6 @@ class SlackController < ApplicationController
 				Deposit.create(amount: amount, user_id: user[:id])
 
 				render :plain => "Die Einzahlung von #{amount} wurde erstellt."
-			end
 		else
 			render :plain => "Request nicht gültig."
 		end
