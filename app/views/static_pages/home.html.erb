@@ -1,14 +1,31 @@
     <% if logged_in? %>
-     <div class="col-md-8">
-       <h2>Account status</h2>
+     <div class="col-md-8", style="margin-bottom: 55px;">
+       <h2>Account Status</h2>
        <hr>
-       <p>Your current account balance is: <%= @currentbalance %></p>
 
+         <div class="col-md-4">
+           <h3><small class="text-muted">Your current account balance is </small> <br/>
+             <%= @currentbalance %> €</h3>
+         </div>
+
+        <div class="col-md-4 bg-dark">
+          <h3><small class="text-muted">Your fees and supplement in <%= Date.today.year %></small> <br/>
+            <%= @userfeesupp %> €</h3>
+        </div>
+
+        <div class="col-md-4">
+          <h3><small class="text-muted">Your spendings on Tinto <%= Date.today.year %></small> <br/>
+          <%= @totalspendings %> €</h3>
+        </div>
+
+      </div>
+
+      <div class="col-md-8">
 
        <h2>Current Regattas</h2>
        <hr>
        <%= render 'regattas/nextregattas' %>
-     </div>
+      </div>
     <% else %>
     <div class="bg">
       <div class="centered">
