@@ -29,7 +29,7 @@ User USER
 * `dokku postgres:link tintoapp-database tintoapp`
 * From local machine:
 ```
-git remote add dokku SERVER:tintoapp
+git remote add dokku dokku@SERVER:tintoapp
 git push dokku master
 ```
 *  `dokku domains:add tintoapp tintoapp.bischof.dk`
