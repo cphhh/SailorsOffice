@@ -37,8 +37,12 @@ git push dokku master
 * `dokku config:set --no-restart tintoapp DOKKU_LETSENCRYPT_EMAIL=ADRESSE`
 * `dokku letsencrypt tintoapp`
 * `dokku letsencrypt:cron-job --add `
-* `dokku config:set tintoapp SLACK_SECRET=**********`
 * `dokku postgres:import tintoapp-database < "/home/USER/latest.dump"`
+
+### ENV-Variablen
+* `dokku config:set tintoapp SLACK_SECRET=**********`
+* `dokku config:set tintoapp TB_PASS=PASS`
+* `dokku config:set tintoapp TB_NAME=EMAIL`
 
 ### Backup db
 * ´ssh-keygen -o`
