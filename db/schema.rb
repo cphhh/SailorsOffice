@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190304161036) do
+ActiveRecord::Schema.define(version: 20190305150054) do
 
   create_table "balances", force: :cascade do |t|
     t.integer "regatta_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20190304161036) do
   create_table "regatta_users", force: :cascade do |t|
     t.integer "regatta_id", null: false
     t.integer "user_id", null: false
+    t.float "balance"
     t.index ["regatta_id"], name: "index_regatta_users_on_regatta_id"
     t.index ["user_id"], name: "index_regatta_users_on_user_id"
   end
