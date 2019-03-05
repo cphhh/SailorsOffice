@@ -1,8 +1,13 @@
     <% if logged_in? %>
      <div class="col-md-8">
-         <h2>Current Regattas</h2>
-         <hr>
-         <%= render 'regattas/nextregattas' %>
+       <h2>Account status</h2>
+       <hr>
+       <p>Your current account balance is: <%= @userbalance %></p>
+
+
+       <h2>Current Regattas</h2>
+       <hr>
+       <%= render 'regattas/nextregattas' %>
      </div>
     <% else %>
     <div class="bg">
