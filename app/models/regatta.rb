@@ -1,5 +1,5 @@
 class Regatta < ApplicationRecord
-	has_many :regatta_users
+	has_many :regatta_users, dependent: :destroy
 	has_many :users, :through => :regatta_users
 
   has_many :invoices
