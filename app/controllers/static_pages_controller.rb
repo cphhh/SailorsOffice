@@ -7,26 +7,33 @@ class StaticPagesController < ApplicationController
 		insixweeks = Date.today + 42
     @regattas = Regatta.order(startdate: :asc).where('startdate > ? AND startdate < ?', sixweeksago, insixweeks )
 
-    userid = User.all.find(current_user.id)
+    if logged_in?
+      userid = User.all.find(current_user.id)
+    end
 
     # Update balances for every regatta and user
     updatebalances(userid)
-
-    depositsusersum = Deposit.where(user_id: userid).sum(:amount)
-    costsusersum = RegattaUser.where(user_id: userid).sum(:balance)
-    @currentbalance = depositsusersum - costsusersum
 
     # Fees and Supplements
     dt = Date.today
     boy = dt.beginning_of_year
     eoy = dt.end_of_year
     regattauseroy = RegattaUser.joins(:regatta).merge(Regatta.where("startdate >= ? and startdate <= ?", boy, eoy))
-    usersfees = regattauseroy.where(user_id: userid).sum(:fee)
-    userssupp = regattauseroy.where(user_id: userid).sum(:supplement)
+    regattauserbt = regattauseroy.joins(:regatta).merge(Regatta.where("startdate <= ?", Date.today))
+    usersfees = regattauserbt.where(user_id: userid).sum(:fee)
+    userssupp = regattauserbt.where(user_id: userid).sum(:supplement)
     @userfeesupp = usersfees + userssupp
 
+    # User balance
+    depositsusersum = Deposit.where(user_id: userid).sum(:amount)
+    costsusersum = RegattaUser.where(user_id: userid).sum(:balance)
+    regattauserat = RegattaUser.joins(:regatta).merge(Regatta.where("startdate >= ?", Date.today))
+    futureusersfees = regattauserat.where(user_id: userid).sum(:fee)
+    futureuserssupp = regattauserat.where(user_id: userid).sum(:supplement)
+    @currentbalance = depositsusersum - costsusersum + futureusersfees + futureuserssupp
+
     # Total spendings
-    @totalspendings = regattauseroy.where(user_id: userid).sum(:costs)
+    @totalspendings = regattauseroy.where(user_id: userid).sum(:costs) - futureusersfees - futureuserssupp
 
     #depositssum = Deposit.all.sum(:amount)
     #fee, supp, costs, expenses
