@@ -1,4 +1,6 @@
 # StaticPagesController
+require 'rounding'
+
 class StaticPagesController < ApplicationController
   STARTAMOUNT = 836.26
 
@@ -48,6 +50,7 @@ class StaticPagesController < ApplicationController
   private
 
   def updatebalances(userid)
+
     Balance.all.each do |balance|
       users = balance.regatta.users.all
 
@@ -57,8 +60,8 @@ class StaticPagesController < ApplicationController
         costs = invoices.sum(:price)
         expenses = userinvoices.sum(:price)
         fee = ((balance.regatta.enddate - balance.regatta.startdate).to_i + 1)*balance.regatta.fee
-        supp = (((costs/users.count)/100)*balance.regatta.supplement).ceil
-        usercosts = (costs/users.count).ceil + fee + supp
+        supp = (((costs/users.count)/100)*balance.regatta.supplement).ceil_to(0.01)
+        usercosts = (costs/users.count).ceil_to(0.01) + fee + supp
         userbalance = usercosts - expenses
 
         balance.regatta.regatta_users.find_by(user_id: user.id).update_attributes(balance: userbalance)
