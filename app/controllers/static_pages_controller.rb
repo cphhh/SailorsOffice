@@ -56,9 +56,9 @@ class StaticPagesController < ApplicationController
         costs = invoices.sum(:price)
         expenses = userinvoices.sum(:price)
         fee = ((balance.regatta.enddate - balance.regatta.startdate).to_i + 1)*balance.regatta.fee
-        supp = (((costs/users.count)/100)*balance.regatta.supplement).round(2)
+        supp = (((costs/users.count)/100)*balance.regatta.supplement).ceil
         usercosts = (costs/users.count) + fee + supp
-        userbalance = ((costs / users.count) + supp + fee) - expenses
+        userbalance = usercosts.ceil - expenses
 
         balance.regatta.regatta_users.find_by(user_id: user.id).update_attributes(balance: userbalance)
         balance.regatta.regatta_users.find_by(user_id: user.id).update_attributes(costs: usercosts)
