@@ -29,7 +29,7 @@ class StaticPagesController < ApplicationController
       regattauserat = RegattaUser.joins(:regatta).merge(Regatta.where("startdate >= ?", Date.today))
       futureusersfees = regattauserat.where(user_id: userid).sum(:fee)
       futureuserssupp = regattauserat.where(user_id: userid).sum(:supplement)
-      currentbalance = depositsusersum - costsusersum + futureusersfees + futureuserssupp
+      @currentbalance = depositsusersum - costsusersum + futureusersfees + futureuserssupp
 
       # Total spendings
       @totalspendings = regattauseroy.where(user_id: userid).sum(:costs) - futureusersfees - futureuserssupp
