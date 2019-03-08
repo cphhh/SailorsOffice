@@ -16,11 +16,27 @@
         <%= f.label :enddate %>
         <%= f.date_field :enddate, class: 'form-control' %>
 
-        <%= f.label :supplement %>
-        <%= f.text_field :supplement, class: 'form-control', placeholder: "5,00" %>
-        
+        <%= f.label :registration_deadline %>
+        <%= f.date_field :registration_deadline, class: 'form-control' %>
+
+        <%= f.label :registrated %>
+        <%= f.check_box :registrated, class: 'form-control' %>
+
+        <%= f.label :early_entry_deadline %>
+        <%= f.date_field :early_entry_deadline, class: 'form-control' %>
+
+        <%= f.label :paid %>
+        <%= f.check_box :paid, class: 'form-control' %>
+
+        <%= f.label :comment %>
+        <%= f.text_field :comment, class: 'form-control' %>
+
         <%= f.label :fee %>
         <%= f.text_field :fee, class: 'form-control', placeholder: "5,00" %>
+
+        <%= f.label :supplement %>
+        <%= f.text_field :supplement, class: 'form-control',
+        placeholder: "5,00" %>
 
 				<%= f.submit "Create regatta", class: "btn btn-primary" %>
       <% end %>

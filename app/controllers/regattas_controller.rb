@@ -67,9 +67,7 @@ class RegattasController < ApplicationController
   private
 
   def regatta_params
-    params.require(:regatta).permit(
-      :name, :place, :startdate, :enddate, :supplement, :fee, user_ids: []
-    )
+    params.require(:regatta).permit(:name, :place, :startdate, :enddate, :supplement, :registration_deadline, :registrated, :early_entry_deadline, :paid, :comment, :fee, user_ids: [])
   end
 
   def logged_in_user

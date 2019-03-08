@@ -7,7 +7,11 @@
 			%th
 			%th Startdate
 			%th
-			%th Enddat
+			%th Enddate
+			%th
+			%th Registrated
+			%th
+			%th Paid
 			%th
 			%th Crew
 			%th
@@ -25,6 +29,18 @@
 				%td= regatta.startdate
 				%td
 				%td= regatta.enddate
+				%td
+				%td
+					- if regatta.registrated == true
+						%i.fe.fe-check
+					- else
+						%i.fe.fe-minus
+				%td
+				%td
+					- if regatta.paid == true
+						%i.fe.fe-check
+					- else
+						%i.fe.fe-minus
 				%td
 				%td= regatta.users.all.map(&:name).flatten.join(',')
 				%td

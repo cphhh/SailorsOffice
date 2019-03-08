@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+  %p
+    Dear #{@user.name},
+  %p
+    the early entry fee deadline for the #{@regatta.name} regatta is in four days. Please speak with #{@regatta.users.all.map(&:name).flatten.join(',')} about competing and paying for this regatta.
+
+  %p Cheers,
+  %p KrIschi

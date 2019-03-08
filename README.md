@@ -38,6 +38,7 @@ git push dokku master
 * `dokku letsencrypt tintoapp`
 * `dokku letsencrypt:cron-job --add `
 * `dokku postgres:import tintoapp-database < "/home/USER/latest.dump"`
+* User und Crewkonto mit `User.create(name: 'Crewkonto', email: 'EMAIL', password: 'PASS')` in Seeds anlegen mit `rails db:seed` ausführen
 
 ### ENV-Variablen
 * `dokku config:set tintoapp SLACK_SECRET=**********`

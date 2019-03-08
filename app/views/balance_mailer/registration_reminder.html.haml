@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+  %p
+    Dear #{@user.name},
+  %p
+    the registration deadline for the #{@regatta.name} regatta is in two days. Please speak with #{@regatta.users.all.map(&:name).flatten.join(',')} about registration.
+
+  %p Cheers,
+  %p KrIschi

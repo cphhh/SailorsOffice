@@ -13,6 +13,26 @@ class BalanceMailer < ApplicationMailer
 		end
   end
 
+  def registration_reminder(regatta, user)
+    begin
+      @regatta = regatta
+      @user = user
+      mail(to: user.email, subject: "Please register for #{regatta.name} regatta")
+    rescue Net::SMTPAuthenticationError
+      retry
+    end
+  end
+
+  def earlyentry_reminder(regatta, user)
+    begin
+      @regatta = regatta
+      @user = user
+      mail(to: user.email, subject: "Please pay for #{regatta.name} regatta")
+    rescue Net::SMTPAuthenticationError
+      retry
+    end
+  end
+
   def send_balance(regatta, user)
     @regatta = regatta
     @user = user
