@@ -4,7 +4,6 @@
 
     <div class="row">
       <div class="col-md-1"><b>Name</b></div>
-      <div class="col-md-1"><b>Place</b></div>
       <div class="col-md-1" style="margin-right: 10px"><b>Startdate</b></div>
       <div class="col-md-1"><b>Enddate</b></div>
       <% @users.each do |user| %>
@@ -20,7 +19,6 @@
         <div class="row">
       <% end %>
         <div class="col-md-1"><%=regatta.name%></div>
-        <div class="col-md-1"><%=regatta.place%></div>
         <div class="col-md-1" style="margin-right: 10px"><%=regatta.startdate%></div>
         <div class="col-md-1"><%=regatta.enddate%></div>
         <%= f.collection_check_boxes :user_ids, User.all, :id, :name do |b| %>

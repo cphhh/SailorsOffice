@@ -49,7 +49,7 @@ class RegattasController < ApplicationController
 
   def joinregattas
     @user = User.find(current_user.id)
-    @users = User.all
+    @users = User.where.not(name: "Crewkonto")
     @regattas = Regatta.all.order(startdate: :asc)
   end
 
