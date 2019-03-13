@@ -2,42 +2,32 @@
   <h1 style="text-align:left">Add crew</h1>
   <hr>
 
+    <div class="row">
+      <div class="col-md-1"><b>Name</b></div>
+      <div class="col-md-1"><b>Place</b></div>
+      <div class="col-md-1" style="margin-right: 10px"><b>Startdate</b></div>
+      <div class="col-md-1"><b>Enddate</b></div>
+      <% @users.each do |user| %>
+        <div class="col-md-1"><b><%= user.name %></b></div>
+      <% end %>
+    </div>
+
   <% @regattas.each_with_index do |regatta, index| %>
     <%= form_for(regatta) do |f| %>
-      <% if index == 0 %>
-        <table class="table table-striped">
-
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Place</th>
-              <th>Startdate</th>
-              <th>Enddate</th>
-            <% @users.each do |user| %>
-              <th><%= user.name %></th>
-            <% end %>
-              <th></th>
-            </tr>
-          </thead>
-
-      		<tbody>
-        <% end %>
-
-    				<tr>
-    	 	      <td><%=regatta.name%></td>
-        	    <td><%=regatta.place%></td>
-         	    <td><%=regatta.startdate%></td>
-          	  <td><%=regatta.enddate%></td>
-              <%= f.collection_check_boxes :user_ids, User.all, :id, :name do |b| %>
-                <td><%= b.check_box(class: "check_box") %></td>
-              <% end %>
-              <td><%= f.submit "Save", class: "btn-primary" %></td>
-    			  </tr>
-      <% if index == @regattas.count %>
-      		</tbody>
-        </table>
+      <% if index.even? == true %>
+        <div class="row">
+      <% else %>
+        <div class="row">
       <% end %>
+        <div class="col-md-1"><%=regatta.name%></div>
+        <div class="col-md-1"><%=regatta.place%></div>
+        <div class="col-md-1" style="margin-right: 10px"><%=regatta.startdate%></div>
+        <div class="col-md-1"><%=regatta.enddate%></div>
+        <%= f.collection_check_boxes :user_ids, User.all, :id, :name do |b| %>
+          <div class="col-md-1"><td><%= b.check_box(class: "check_box") %></div>
+        <% end %>
+        <div class="col-md-2"><%= f.submit "Save", class: "btn btn-primary btn-sm" %></div>
+      </div>
     <% end %>
   <% end %>
-
 </div>
