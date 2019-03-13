@@ -1,0 +1,88 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to image_tag("logo.png", class:"navbar-brand pull-left"), root_path %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li>
+            <%= link_to "Logout", logout_path, method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="container-flex">
+  <nav class="col-md-2 sidebar">
+    <div class="sidebar-sticky">
+      <ul class="nav flex-column">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Regattas</span>
+        </h6>
+        <li class="nav-item">
+          <a class="nav-link" href="/regattas" id="allregattas">
+            <i class="fe fe-bar"></i>
+            All regattas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/myregattas">
+            <i class="fe fe-heart"></i>
+            My regattas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/regattas/new" id="newregatta">
+            <i class="fe fe-plus"></i>
+            New regatta
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/joinregattas" id="joinregattas">
+            <i class="fe fe-list-task"></i>
+            Add crew
+          </a>
+        </li>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Balances</span>
+        </h6>
+        <li class="nav-item">
+          <a class="nav-link" href="/balances" id="allbalances">
+            <i class="fe fe-bar"></i>
+            All balances
+          </a>
+        </li>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Invoices</span>
+        </h6>
+        <li class="nav-item">
+          <a class="nav-link" href="/invoices" id="allinvoices">
+            <i class="fe fe-bar"></i>
+            All invoices
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/myinvoices">
+            <i class="fe fe-layer"></i>
+            My invoices
+          </a>
+        </li>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Deposits</span>
+        </h6>
+        <li class="nav-item">
+          <a class="nav-link" href="/deposits/" id="alldeposits">
+            <i class="fe fe-bar"></i>
+            All deposits
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/deposits/new" id="newdeposit">
+            <i class="fe fe-plus"></i>
+            New deposit
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
