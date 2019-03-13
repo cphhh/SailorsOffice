@@ -5,20 +5,20 @@
   <% @regattas.each_with_index do |regatta, index| %>
     <%= form_for(regatta) do |f| %>
       <% if index == 0 %>
-          <table class="table table-striped">
+        <table class="table table-striped">
 
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Place</th>
-                <th>Startdate</th>
-                <th>Enddate</th>
-              <% @users.each do |user| %>
-                <th><%= user.name %></th>
-              <% end %>
-                <th></th>
-              </tr>
-            </thead>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Place</th>
+              <th>Startdate</th>
+              <th>Enddate</th>
+            <% @users.each do |user| %>
+              <th><%= user.name %></th>
+            <% end %>
+              <th></th>
+            </tr>
+          </thead>
 
       		<tbody>
         <% end %>
@@ -33,8 +33,10 @@
               <% end %>
               <td><%= f.submit "Save", class: "btn-primary" %></td>
     			  </tr>
-    		</tbody>
-      </table>
+      <% if index == @regattas.count %>
+      		</tbody>
+        </table>
+      <% end %>
     <% end %>
   <% end %>
 
