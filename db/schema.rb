@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20190308180246) do
     t.float "supplement"
     t.float "fee"
     t.date "registration_deadline"
-    t.boolean "registrated"
+    t.boolean "registrated", default: false
     t.date "early_entry_deadline"
-    t.boolean "paid"
+    t.boolean "paid", default: false
     t.string "comment"
   end
 

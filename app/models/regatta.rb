@@ -2,11 +2,11 @@ class Regatta < ApplicationRecord
 	has_many :regatta_users, dependent: :destroy
 	has_many :users, :through => :regatta_users
 
-  has_many :invoices
+  has_many :invoices, dependent: :destroy
   has_one :balance
 
 	before_save {self.name = name.capitalize}
-	validates :name, presence: true
+	validates :name, presence: true, format: { without: /\s/ }
 	validates :startdate, presence: true
 	validates :enddate, presence: true
 	validates :supplement, presence: true
